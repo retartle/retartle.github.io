@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Noel showcasing IT skills, fishkeeping, and hobbies.">
+    <title>Noel's Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Google Fonts (for custom fonts) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div id="darkModeToggle" class="toggle-container">
+        <div id="toggle" class="toggle"></div>
+    </div>
+
+    <header>
+
+        <div id="hamburgerMenu" class="hamburger-menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <nav class="nav-container">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a href="#" class="nav-link nav-icon">
+                        <img src="assets/icons/home.png" alt="Home" style="width: 20px; height: 20px;">
+                    </a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
+                <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                <li class="nav-item"><a class="nav-link" href="#hobbies">Hobbies</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
+        </nav>        
+
+        <div id="mobileNav" class="mobile-nav">
+            <ul class="nav">
+                <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About Me</a></li>
+                <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+                <li class="nav-item"><a href="#hobbies" class="nav-link">Hobbies</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+
+    </header>
+
+    <section id="hero" class="hero-section">
+        <div class="parallax-background"></div> 
+        <div class="hero-text parallax-element"> 
+            <h1>Noel's Portfolio</h1>
+            <p>I bought a property in Egypt (lie)</p>
+        </div>
+    </section>
+
+    <section id="about" class="container py-5" data-animate>
+        <h2 class="animate__animated animate__fadeIn">About Me</h2>
+        <p>Hi, I'm Noel, a Cybersecurity & Digital Forensics student at Ngee Ann Polytechnic.</p>
+    </section>
+
+
+    <section id="projects" class="container py-5" data-animate>
+        <h2 class="animate__animated animate__fadeIn">Projects</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card acrylic mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Discord Bot</h5>
+                        <p class="card-text">A bot that manages servers and games.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card acrylic mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Pentesting Project</h5>
+                        <p class="card-text">A cybersecurity assessment tool.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hobbies Section -->
+    <section id="hobbies" class="container py-5" data-animate>
+        <h2 class="animate__animated animate__fadeIn">Hobbies</h2>
+        <p>Photography</p>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card-effect">
+                    <img src="assets/images/testimg1.jpeg" class="img-fluid rounded" alt="pic1">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card-effect">
+                    <img src="assets/images/testimg2.jpeg" class="img-fluid rounded" alt="pic2">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card-effect">
+                    <img src="assets/images/testimg3.jpeg" class="img-fluid rounded" alt="pic3">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card-effect">
+                    <img src="assets/images/testimg3.jpeg" class="img-fluid rounded" alt="pic3">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card-effect">
+                    <img src="assets/images/testimg3.jpeg" class="img-fluid rounded" alt="pic3">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card-effect">
+                    <img src="assets/images/testimg3.jpeg" class="img-fluid rounded" alt="pic3">
+                </div>
+            </div>
+        </div>
+    </section>
+        
+
+
+    <!-- Footer and Contact Section -->
+    <footer id="contact" class="acrylic no-hover text-center p-3">
+        <h2>Contact</h2>
+        <div class="social-icons mx-auto" style="max-width: 400px; display: flex; justify-content: center; gap: 20px;">
+            <a href="https://instagram.com/noelng06" target="_blank" aria-label="Instagram">
+                <img src="assets/icons/instagram.png" alt="Instagram" style="width: 40px; height: 40px;">
+                
+            </a>
+            <a href="https://www.linkedin.com/in/noelngzhien/" target="_blank" aria-label="LinkedIn">
+                <img src="assets/icons/linkedin.png" alt="LinkedIn" style="width: 40px; height: 40px;">
+            </a>
+            <a href="https://github.com/retartle" target="_blank" aria-label="GitHub">
+                <img src="assets/icons/github.png" alt="GitHub" style="width: 40px; height: 40px;">
+            </a>
+        </div>
+    </footer>
+    
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="scripts.js"></script>
+</body>
+</html>
