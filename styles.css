@@ -506,3 +506,19 @@ body.dark-mode #darkModeToggle .toggle:before {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* Optional: Styling the dynamic word */
+#dynamic-word {
+    color: #8896d3; /* Example color for the dynamic text */
+    font-weight: bold;
+}
+#dynamic-word::after {
+    content: "|";
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}

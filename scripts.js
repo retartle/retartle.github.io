@@ -157,3 +157,63 @@ document.addEventListener('DOMContentLoaded', () => {
 
     elementsToAnimate.forEach((el) => observer.observe(el));
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const dynamicWordElement = document.getElementById("dynamic-word");
+    const words = ["dumb", "fun", "creative"]; // Words to cycle through
+    let currentWordIndex = 0;
+    let isTyping = false; // To track if animation is already running
+
+    const typeEffect = (word, callback) => {
+        let charIndex = 0;
+        const interval = setInterval(() => {
+            dynamicWordElement.textContent = word.slice(0, charIndex + 1);
+            charIndex++;
+            if (charIndex === word.length) {
+                clearInterval(interval);
+                setTimeout(callback, 1000); // Pause before deleting
+            }
+        }, 100); // Typing speed
+    };
+
+    const deleteEffect = (callback) => {
+        let word = dynamicWordElement.textContent;
+        let charIndex = word.length;
+        const interval = setInterval(() => {
+            dynamicWordElement.textContent = word.slice(0, charIndex - 1);
+            charIndex--;
+            if (charIndex === 0) {
+                clearInterval(interval);
+                callback();
+            }
+        }, 50); // Deleting speed
+    };
+
+    const cycleWords = () => {
+        if (!isTyping) {
+            isTyping = true; // Prevent multiple cycles from starting
+            typeEffect(words[currentWordIndex], () => {
+                deleteEffect(() => {
+                    currentWordIndex = (currentWordIndex + 1) % words.length; // Move to the next word
+                    isTyping = false; // Allow new cycle when necessary
+                    cycleWords(); // Continue cycling
+                });
+            });
+        }
+    };
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    if (!isTyping) {
+                        cycleWords(); // Start animation when section enters viewport
+                    }
+                }
+            });
+        },
+        { threshold: 0.5 } // Trigger when 50% of the section is visible
+    );
+
+    observer.observe(document.getElementById("about"));
+});
