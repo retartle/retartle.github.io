@@ -204,7 +204,7 @@ body.dark-mode #darkModeToggle .toggle:before {
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 1000;
+    z-index: 500;
     background: rgba(255, 255, 255, 0.5);
     border-radius: 60px;
     padding: 8px 16px; 
@@ -495,6 +495,83 @@ body.dark-mode #darkModeToggle .toggle:before {
 .card-effect:hover:before {
     opacity: 1;
 }
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; 
+    z-index: 9999;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+    animation: fadeIn 0.5s ease-out;
+  }
+
+
+/* Modal Fade In Animation */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+/* Modal Close Animation */
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+@keyframes zoomIn {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+
+/* Modal Content (Image) */
+.modal-content {
+    margin: 0;  /* Remove default margin */
+    display: block;
+    max-width: 100%;  /* Adjust to your preference */
+    max-height: 80vh; /* Adjust to your preference */
+    object-fit: contain; /* Ensure image retains aspect ratio */
+    animation: zoomIn 0.5s ease-out;
+    background: transparent;  /* Make sure the content background is transparent */
+    border: none;  /* Ensure no border */
+  }
+
+/* Caption of Modal Image (Image Text) */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #bed3e5;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 65px;
+    color: #f1f1f1;
+    font-size: 50px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 
 [data-animate] {
     opacity: 0;

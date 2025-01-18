@@ -217,3 +217,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
     observer.observe(document.getElementById("about"));
 });
+
+
+// Get the modal
+var modal = document.getElementById("myModal");
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+
+// Get all images with the 'gallery-img' class
+var images = document.querySelectorAll(".gallery-img");
+
+// Loop through each image and add the onclick event
+images.forEach(function(image) {
+  image.onclick = function() {
+    modal.style.display = "block";
+    modal.style.animation = "fadeIn 0.5s ease-out"; // Trigger fade-in animation
+    modalImg.src = this.src;
+    captionText.innerHTML = this.alt;
+  };
+});
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+span.onclick = function() {
+  // Apply fade-out animation before hiding modal
+  modal.style.animation = "fadeOut 0.5s ease-out"; // Trigger fade-out animation
+
+  // Set a timeout to hide the modal after animation ends
+  setTimeout(function() {
+    modal.style.display = "none";
+  }, 500); // Hide modal after 0.5 seconds (animation duration)
+}
