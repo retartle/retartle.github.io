@@ -69,7 +69,7 @@ body.light-mode {
     transform: none;
     backdrop-filter: none;
     color: #3d3d43;
-    background-color: rgba(233, 227, 227, 0.1); 
+    background-color: rgba(114, 114, 114, 0.1);
 }
 
 body {
@@ -80,8 +80,16 @@ body {
 
 /* Optional for dark mode toggle */
 body.dark-mode .acrylic {
-    background-color: rgba(0, 0, 0, 0.3); 
+    background-color: rgba(140, 140, 140, 0.3); 
     border-color: rgba(0, 0, 0, 0.4);
+    color: rgb(230, 230, 230); 
+}
+
+body.dark-mode .acrylic.no-hover:hover {
+    transform: none;
+    backdrop-filter: none;
+    color: rgb(230, 230, 230); 
+    background-color: rgba(140, 140, 140, 0.3); 
 }
 
 
@@ -443,6 +451,7 @@ body.dark-mode #darkModeToggle .toggle:before {
 .card-effect {
     position: relative;
     overflow: hidden;
+    aspect-ratio: 4 / 3;
     border-radius: 10px;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -458,7 +467,7 @@ body.dark-mode #darkModeToggle .toggle:before {
 .card-effect img {
     display: block;
     width: 100%;
-    height: auto;
+    object-position: center;
     border-radius: 10px;
     transition: transform 0.4s ease;
 }
