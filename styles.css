@@ -557,6 +557,19 @@ body.dark-mode #darkModeToggle .toggle:before {
     animation: blink 0.7s infinite;
 }
 
+/* Styling for email link */
+.email-link {
+    color: #8896d3;
+    text-decoration: none;
+}
+
+/* Hover effect for email link */
+.email-link:hover {
+    color: #7668c5; /* Hover color */
+    transition: color 0.5s ease;
+}
+
+
 @keyframes blink {
     50% {
         opacity: 0;
