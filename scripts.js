@@ -218,11 +218,11 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(document.getElementById("about"));
 });
 
-
-// Get the modal
+// Get the modal, image, caption, and modal link
 var modal = document.getElementById("myModal");
 var modalImg = document.getElementById("img01");
 var captionText = document.getElementById("caption");
+var modalLink = document.getElementById("modalLink");
 
 // Get all images with the 'gallery-img' class
 var images = document.querySelectorAll(".gallery-img");
@@ -234,6 +234,8 @@ images.forEach(function(image) {
     modal.style.animation = "fadeIn 0.5s ease-out"; // Trigger fade-in animation
     modalImg.src = this.src;
     captionText.innerHTML = this.alt;
+    // Set the modal link to the full-size image URL (you can replace 'this.src' with the full-size image URL if different)
+    modalLink.href = this.src; 
   };
 });
 
@@ -244,8 +246,20 @@ span.onclick = function() {
   // Apply fade-out animation before hiding modal
   modal.style.animation = "fadeOut 0.5s ease-out"; // Trigger fade-out animation
 
-  // Set a timeout to hide the modal after animation ends
+  // Set a timeout to hide the modal after the animation ends
   setTimeout(function() {
     modal.style.display = "none";
   }, 500); // Hide modal after 0.5 seconds (animation duration)
 }
+
+// Close modal when clicking anywhere on the modal (outside the image)
+modal.onclick = function(event) {
+  // Check if the click is outside the modal content
+  if (event.target === modal) {
+    // Apply fade-out animation before hiding modal
+    modal.style.animation = "fadeOut 0.5s ease-out"; // Trigger fade-out animation
+    setTimeout(function() {
+      modal.style.display = "none";
+    }, 500); // Hide modal after 0.5 seconds (animation duration)
+  }
+};

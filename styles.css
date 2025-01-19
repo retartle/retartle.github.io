@@ -249,18 +249,6 @@ body.dark-mode #darkModeToggle .toggle:before {
     transition: all 0.3s ease-in-out;
 }
 
-/* Media query for responsiveness */
-@media (max-width: 768px) {
-    .nav {
-        flex-direction: column;
-        padding: 10px;
-    }
-
-    .nav-item .nav-link {
-        padding: 10px;
-    }
-}
-
 /* Hamburger Button */
 .hamburger-menu {
     display: none; 
@@ -359,49 +347,6 @@ body.dark-mode #darkModeToggle .toggle:before {
     }
     to {
         transform: translateY(-100%); 
-    }
-}
-
-@media (max-width: 768px) {
-
-    .hamburger-menu {
-        display: block;
-    }
-
-    .nav-container {
-        display: none; 
-    }
-
-    .mobile-nav {
-        display: none;
-    }
-
-    /* Adjust background positioning */
-    .hero-section {
-        background-size: cover;
-    }
-
-    .hero-section .parallax-background {
-        background: url('assets/images/hero-mobile1.jpeg') no-repeat center top;
-        background-size: cover;
-    }
-
-    /* Adjust text alignment and sizing */
-    .hero-text {
-        text-align: center; /* Center-align text on smaller screens */
-        margin: 0 auto; /* Center the text block */
-        padding: 25px;
-        margin-top: -250px;
-        border-radius: 20px;
-        background: rgba(255, 255, 255, 0.2);
-    }
-
-    .hero-text h1 {
-        font-size: 2.5rem; /* Smaller font for mobile */
-    }
-
-    .hero-text p {
-        font-size: 1rem;
     }
 }
 
@@ -557,6 +502,7 @@ body.dark-mode #darkModeToggle .toggle:before {
     animation: zoomIn 0.5s ease-out;
     background: transparent;  /* Make sure the content background is transparent */
     border: none;  /* Ensure no border */
+    cursor: pointer;
   }
 
 /* Caption of Modal Image (Image Text) */
@@ -575,7 +521,7 @@ body.dark-mode #darkModeToggle .toggle:before {
 .close {
     position: absolute;
     top: 15px;
-    right: 65px;
+    right: 40px;
     color: #f1f1f1;
     font-size: 50px;
     font-weight: bold;
@@ -614,5 +560,63 @@ body.dark-mode #darkModeToggle .toggle:before {
 @keyframes blink {
     50% {
         opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .nav {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .nav-item .nav-link {
+        padding: 10px;
+    }
+
+    .hamburger-menu {
+        display: block;
+    }
+
+    .nav-container {
+        display: none; 
+    }
+
+    .mobile-nav {
+        display: none;
+    }
+
+    /* Adjust background positioning */
+    .hero-section {
+        background-size: cover;
+    }
+
+    .hero-section .parallax-background {
+        background: url('assets/images/hero-mobile3.jpeg') no-repeat center top;
+        background-size: cover;
+    }
+
+    /* Adjust text alignment and sizing */
+    .hero-text {
+        text-align: center; /* Center-align text on smaller screens */
+        margin: 0 auto; /* Center the text block */
+        padding: 25px;
+        margin-top: -250px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .hero-text h1 {
+        font-size: 2.5rem; /* Smaller font for mobile */
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+    }
+
+    .modal-content {
+        max-width: 80%; /* Reduce width on mobile to 90% of the viewport */
+        max-height: 100vh; /* Adjust height for a better fit */
+        margin-left: 50px;
     }
 }
