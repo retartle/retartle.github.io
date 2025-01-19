@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener("DOMContentLoaded", () => {
     const dynamicWordElement = document.getElementById("dynamic-word");
-    const words = ["dumb", "fun", "creative"]; // Words to cycle through
+    const words = ["dumb", "fun", "creative", "retarded"]; // Words to cycle through
     let currentWordIndex = 0;
     let isTyping = false; // To track if animation is already running
 

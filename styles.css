@@ -135,7 +135,6 @@ body.dark-mode #darkModeToggle .toggle:before {
 /* Parallax Effect Setup */
 .hero-section {
     position: relative;
-    background: url('assets/images/hero.png') no-repeat center center;
     background-size: cover;
     height: 100vh;
     overflow: hidden;
@@ -151,7 +150,7 @@ body.dark-mode #darkModeToggle .toggle:before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('test4.png') no-repeat fixed center center;
+    background: url('assets/images/hero.png') no-repeat fixed center center;
     background-size: cover;
     z-index: -1;
     transform: translateZ(0); 
@@ -290,16 +289,6 @@ body.dark-mode #darkModeToggle .toggle:before {
     }
 }
 
-/* Show hamburger button on mobile */
-@media (max-width: 768px) {
-    .hamburger-menu {
-        display: block; 
-    }
-
-    .nav-container {
-        display: none; 
-    }
-}
 /* Default Mobile Navbar */
 .mobile-nav {
     display: none; 
@@ -373,8 +362,8 @@ body.dark-mode #darkModeToggle .toggle:before {
     }
 }
 
-/* Mobile-specific styles */
 @media (max-width: 768px) {
+
     .hamburger-menu {
         display: block;
     }
@@ -385,6 +374,34 @@ body.dark-mode #darkModeToggle .toggle:before {
 
     .mobile-nav {
         display: none;
+    }
+
+    /* Adjust background positioning */
+    .hero-section {
+        background-size: cover;
+    }
+
+    .hero-section .parallax-background {
+        background: url('assets/images/hero-mobile1.jpeg') no-repeat center top;
+        background-size: cover;
+    }
+
+    /* Adjust text alignment and sizing */
+    .hero-text {
+        text-align: center; /* Center-align text on smaller screens */
+        margin: 0 auto; /* Center the text block */
+        padding: 25px;
+        margin-top: -250px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .hero-text h1 {
+        font-size: 2.5rem; /* Smaller font for mobile */
+    }
+
+    .hero-text p {
+        font-size: 1rem;
     }
 }
 
