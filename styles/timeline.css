@@ -1,0 +1,196 @@
+/* Timeline Container */
+.timeline {
+    position: relative;
+    padding: 20px 0;
+}
+
+/* The line */
+.timeline::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.4);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Timeline Items */
+.timeline-item {
+    margin-bottom: 30px;
+    position: relative;
+    width: 50%;
+    padding-right: 40px;
+}
+
+/* Alternating items */
+.timeline-item:nth-child(even) {
+    margin-left: 50%;
+    padding-right: 0;
+    padding-left: 40px;
+}
+
+/* Content boxes */
+.timeline-content.acrylic {
+    position: relative;
+    margin-right: 20px;
+}
+
+/* For even items */
+.timeline-item:nth-child(even) .timeline-content.acrylic {
+    margin-right: 0;
+    margin-left: 20px;
+}
+
+/* Dots on the timeline */
+.timeline-content.acrylic::before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    right: -48px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+/* Dots for even items */
+.timeline-item:nth-child(even) .timeline-content.acrylic::before {
+    right: auto;
+    left: -48px;
+}
+
+/* Timeline content styling */
+.timeline-content h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.timeline-date {
+    font-size: 0.9rem;
+    color: rgba(61, 61, 67, 0.8);
+    margin-bottom: 10px;
+}
+
+body.dark-mode .timeline-date {
+    color: rgba(230, 230, 230, 0.8);
+}
+
+.timeline-content ul {
+    margin: 10px 0 0 0;
+    padding-left: 20px;
+}
+
+.timeline-content li {
+    margin-bottom: 5px;
+}
+
+/* Logo styling */
+.school-logo {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.school-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.timeline-content:hover .school-logo img {
+    opacity: 1;
+}
+
+/* Adjust content padding to accommodate logo */
+.timeline-content.acrylic {
+    padding-right: 90px;
+    position: relative;
+}
+
+/* Mobile responsiveness for logo */
+@media (max-width: 576px) {
+    .school-logo {
+        width: 40px;
+        height: 40px;
+        top: 15px;
+        right: 15px;
+    }
+    
+    .timeline-content.acrylic {
+        padding-right: 70px;
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 30px;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 0;
+    }
+    
+    .timeline-item:nth-child(even) {
+        margin-left: 0;
+        padding-left: 70px;
+    }
+    
+    .timeline-content.acrylic::before {
+        left: -38px;
+        right: auto;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-content.acrylic::before {
+        left: -38px;
+    }
+    
+    .timeline-content.acrylic {
+        margin: 0;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-content.acrylic {
+        margin: 0;
+    }
+}
+
+.timeline-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.timeline-link:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Preserve the acrylic hover effect */
+.timeline-link:hover .timeline-content.acrylic {
+    backdrop-filter: blur(10px) brightness(0.8);
+    background-color: rgba(114, 114, 114, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.918);
+    transform: scale(0.95);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.timeline-link:active .timeline-content.acrylic {
+    transform: scale(0.9);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}

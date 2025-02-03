@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="styles/animations.css">
     <link rel="stylesheet" href="styles/modal.css">
     <link rel="stylesheet" href="styles/card-effects.css">
+    <link rel="stylesheet" href="styles/timeline.css">
     <link rel="stylesheet" href="styles.css"> <!-- Place this last -->
     
 
@@ -58,6 +59,7 @@
                     </a>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
+                <li class="nav-item"><a href="#education" class="nav-link">Education</a></li>
                 <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
                 <li class="nav-item"><a class="nav-link" href="#hobbies">Hobbies</a></li>
                 <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
@@ -68,6 +70,7 @@
             <ul class="nav">
                 <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="#about" class="nav-link">About Me</a></li>
+                <li class="nav-item"><a href="#education" class="nav-link">Education</a></li>
                 <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
                 <li class="nav-item"><a href="#hobbies" class="nav-link">Hobbies</a></li>
                 <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
@@ -93,7 +96,62 @@
         <h2 class="animate__animated animate__fadeIn">About Me</h2>
         <p id="about-text">Hi, I'm Noel, a Cybersecurity & Digital Forensics student at Ngee Ann Polytechnic, graduating in 2026. With experience in Python, C#, penetration testing, digital forensics, and more, I love working on <span id="dynamic-word">stupid</span> projects like website development and bot automation. My versatility makes me well-suited for roles with a broad technical scope, and I'm currently seeking an entry-level position in computer and mobile forensics.</p>
     </section>
-
+    
+    
+    <section id="education" class="container py-5" data-animate>
+        <h2 class="animate__animated animate__fadeIn">Education</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <a href="https://www.np.edu.sg" target="_blank" class="timeline-link">
+                    <div class="timeline-content acrylic">
+                        <div class="school-logo">
+                            <img src="assets\icons\np.png" alt="Ngee Ann Polytechnic Logo">
+                        </div>
+                        <h3>Ngee Ann Polytechnic</h3>
+                        <p class="timeline-date">2023 - 2026</p>
+                        <p>Diploma in Cybersecurity & Digital Forensics</p>
+                        <ul>
+                            <li>Current GPA (Y2S1): <span class="highlight-score">3.2</span></li>
+                            <li>CCA: Japanese Cultural Club (Apr 2023 - Aug 2023)</li>
+                            <li>Relevant coursework: Python, C#, Network Security, Digital Forensics</li>
+                        </ul>
+                    </div>
+                </a>
+            </div>
+            <div class="timeline-item">
+                <a href="https://hillgrovesec.moe.edu.sg" target="_blank" class="timeline-link">
+                    <div class="timeline-content acrylic">
+                        <div class="school-logo">
+                            <img src="assets\icons\hillgrove.png" alt="Hillgrove Secondary School Logo">
+                        </div>
+                        <h3>Hillgrove Secondary School</h3>
+                        <p class="timeline-date">2019 - 2023</p>
+                        <p>Coursework: Design & Technology [Express Stream]</p>
+                        <ul>
+                            <li>Cambridge O-Levels L1R4: <span class="highlight-score">11</span></li>
+                            <li>CCA: Robotics Club</li>
+                            <li>Roles: ExCo Vice Head of Logistics</li>
+                        </ul>
+                    </div>
+                </a>
+            </div>
+            <div class="timeline-item">
+                <a href="https://princesselizabethpri.moe.edu.sg" target="_blank" class="timeline-link">
+                    <div class="timeline-content acrylic">
+                        <div class="school-logo">
+                            <img src="assets\icons\elizabeth.png" alt="Princess Elizabeth Primary School Logo">
+                        </div>
+                        <h3>Princess Elizabeth Primary School</h3>
+                        <p class="timeline-date">2013 - 2019</p>
+                        <ul>
+                            <li>PSLE: <span class="highlight-score">211</span></li>
+                            <li>CCA: Boys' Brigade</li>
+                        </ul>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
 
     <section id="projects" class="container py-5" data-animate>
         <h2 class="animate__animated animate__fadeIn">Projects</h2>

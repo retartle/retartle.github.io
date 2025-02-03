@@ -4,7 +4,7 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 500;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.3);
     border-radius: 60px;
     padding: 8px 16px; 
     box-shadow: none;
@@ -30,11 +30,11 @@
 
 /* Hover Effect */
 .nav-item .nav-link:hover {
-    color: #c0dfe4; 
+    color: #8896d3; 
 }
 
 .nav-container.scrolled {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.4);
     border-radius: 60px;
     padding: 12px 24px; 
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); 
