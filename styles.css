@@ -270,7 +270,7 @@ body.dark-mode #darkModeToggle .toggle:before {
 
 /* Hamburger to "X" Animation */
 .hamburger-menu .bar.active:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+    transform: rotate(45deg) translate(6.5px, 6.5px);
 }
 
 .hamburger-menu .bar.active:nth-child(2) {
@@ -278,8 +278,9 @@ body.dark-mode #darkModeToggle .toggle:before {
 }
 
 .hamburger-menu .bar.active:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+    transform: rotate(-45deg) translate(6.5px, -6.5px);
 }
+
 
 /* Slide-in animation */
 @keyframes slideIn {
