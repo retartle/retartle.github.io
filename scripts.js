@@ -302,3 +302,35 @@ $(document).on('afterChange', '.modal-carousel', function(event, slick, currentS
     var currentImage = slick.$slides[currentSlide].querySelector('img');
     captionText.innerHTML = currentImage.alt;
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const dynamicWordElement = document.getElementById("dynamic-word-hero");
+    const words = ["AI", "Cybersecurity", "Pentesting", "Sweeping Floors", "Networking", "Digital Forensics"];
+    let currentWordIndex = 0;
+
+    // Set the first word immediately
+    dynamicWordElement.textContent = words[currentWordIndex];
+    dynamicWordElement.style.opacity = 1; // Make sure the first word is visible
+
+    const typeEffect = (word, callback) => {
+        dynamicWordElement.textContent = word;
+        dynamicWordElement.style.opacity = 1; // Fade in the new word
+
+        setTimeout(callback, 1500); // Pause before fading out
+    };
+
+    const fadeOutEffect = (callback) => {
+        dynamicWordElement.style.opacity = 0; // Fade out the word
+
+        setTimeout(callback, 1000); // Wait for the fade to finish
+    };
+
+    const cycleWords = () => {
+        fadeOutEffect(() => {
+            currentWordIndex = (currentWordIndex + 1) % words.length;
+            typeEffect(words[currentWordIndex], cycleWords); // Continue cycling words
+        });
+    };
+
+    cycleWords(); // Start immediately without waiting for the observer
+});

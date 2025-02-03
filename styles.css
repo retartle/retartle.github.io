@@ -1,3 +1,8 @@
+html {
+    scroll-behavior: smooth;
+}
+
+
 /* Existing styles remain here */
 body {
     font-family: 'Lexend', sans-serif;
@@ -173,9 +178,18 @@ body.dark-mode #darkModeToggle .toggle:before {
 }
 
 .hero-text p {
+    display: inline-block;
     font-size: 1.5rem;
-    max-width: 600px;
+    overflow: hidden;
+    white-space: nowrap;
 }
+
+#dynamic-word-hero {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    display: inline-block;
+}
+
 
 /* Additional parallax on inner elements (like images or text) */
 .parallax-element {
@@ -715,4 +729,23 @@ body.dark-mode #darkModeToggle .toggle:before {
     margin-top: 10px;
     font-size: 0.9rem;
     color: #555;
+}
+
+.project-icons {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+.icon {
+    width: 24px; /* Slightly larger for better visibility */
+    height: auto; /* Maintain aspect ratio */
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.icon:hover {
+    opacity: 1;
 }
