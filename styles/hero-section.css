@@ -1,0 +1,73 @@
+.hero-section {
+    position: relative;
+    background-size: cover;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.hero-section .parallax-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../assets/images/hero.png') no-repeat fixed center center;
+    background-size: cover;
+    z-index: -1;
+    transform: translateZ(0); 
+}
+
+.hero-text {
+    color: #353333;
+    text-align:left;
+    z-index: 2;
+    position: relative;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    margin-left: 30%;
+}
+
+.hero-text h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.hero-text p {
+    display: inline-block;
+    font-size: 1.5rem;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+#dynamic-word-hero {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    display: inline-block;
+}
+
+/* Additional parallax on inner elements (like images or text) */
+.parallax-element {
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease-out;
+}
+
+/* A simple scale-in effect as the user scrolls */
+.parallax-element img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease-out;
+}
+
+
+/* Optional: Apply when scrolling */
+@media (min-width: 768px) {
+    .hero-text h1 {
+        font-size: 5rem;
+    }
+}

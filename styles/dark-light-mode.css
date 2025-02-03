@@ -1,0 +1,13 @@
+/* Dark mode styling */
+body.dark-mode {
+    background: linear-gradient(135deg, #1a2a40, #274c77, #335d92);
+    color: rgb(255, 255, 255);
+    transition: background 0.8s ease, color 0.8s ease; 
+}
+
+/* Light mode styling */
+body.light-mode {
+    background: linear-gradient(135deg, #a2c2e1, #d9e6f2, #c8e0f1);
+    color: black;
+    transition: background 0.8s ease, color 0.8s ease;
+}

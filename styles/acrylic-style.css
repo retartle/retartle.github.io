@@ -1,0 +1,48 @@
+.acrylic {
+    backdrop-filter: blur(15px);
+    background-color: rgba(233, 227, 227, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    transition: all 0.3s ease; 
+    color: #3d3d43; 
+}
+
+.acrylic:hover {
+    backdrop-filter: blur(10px) brightness(0.8); 
+    background-color: rgba(114, 114, 114, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.918);
+    transform: scale(0.95); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease; 
+}
+
+.acrylic:active {
+    transform: scale(0.9); 
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    transition: all 0.1s ease; 
+}
+
+/* When you don't want the hover effect */
+.acrylic.no-hover:hover {
+    transform: none;
+    backdrop-filter: none;
+    color: #3d3d43;
+    background-color: rgba(114, 114, 114, 0.1);
+}
+
+/* Optional for dark mode toggle */
+body.dark-mode .acrylic {
+    background-color: rgba(140, 140, 140, 0.3); 
+    border-color: rgba(0, 0, 0, 0.4);
+    color: rgb(230, 230, 230); 
+}
+
+body.dark-mode .acrylic.no-hover:hover {
+    transform: none;
+    backdrop-filter: none;
+    color: rgb(230, 230, 230); 
+    background-color: rgba(140, 140, 140, 0.3); 
+}

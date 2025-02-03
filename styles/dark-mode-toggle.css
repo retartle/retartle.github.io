@@ -1,0 +1,37 @@
+#darkModeToggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.toggle {
+    width: 40px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 50px;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.toggle:before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+/* When dark mode is enabled */
+body.dark-mode #darkModeToggle .toggle {
+    background-color: #333;
+}
+
+body.dark-mode #darkModeToggle .toggle:before {
+    transform: translateX(20px);
+}

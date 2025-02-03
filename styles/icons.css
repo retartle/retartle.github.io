@@ -1,0 +1,50 @@
+/* Social icons styling */
+.social-icons a {
+    display: inline-block;
+    text-decoration: none;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.social-icons img {
+    opacity: 0.7; 
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover effect */
+.social-icons a:hover img {
+    opacity: 1; 
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+/* Styling for email link */
+.email-link {
+    color: #8896d3;
+    text-decoration: none;
+}
+
+/* Hover effect for email link */
+.email-link:hover {
+    color: #7668c5; /* Hover color */
+    transition: color 0.5s ease;
+}
+
+
+.project-icons {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+.icon {
+    width: 24px; /* Slightly larger for better visibility */
+    height: auto; /* Maintain aspect ratio */
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.icon:hover {
+    opacity: 1;
+}

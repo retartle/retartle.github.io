@@ -1,0 +1,135 @@
+/* The Modal (background) */
+.modal {
+    display: none;
+    position: fixed; 
+    z-index: 9999;
+    padding-top: 50px; /* Reduced from 100px to give more room for carousel */
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Modal Carousel Container */
+.modal-carousel-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    animation: zoomIn 0.5s ease-out;
+}
+
+/* Modal Carousel Images */
+.modal-carousel img {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    object-fit: contain;
+    margin: 0 auto;
+    display: block;
+    background: transparent;
+    border: none;
+}
+
+/* Caption styling */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #bed3e5;
+    padding: 10px 0;
+    height: auto; /* Changed from fixed height */
+    min-height: 50px;
+}
+
+/* Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 40px;
+    color: #f1f1f1;
+    font-size: 50px;
+    font-weight: bold;
+    transition: 0.3s;
+    z-index: 1002; /* Ensure it's above carousel controls */
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Enhanced Carousel Navigation Arrows */
+.modal .slick-prev,
+.modal .slick-next {
+    font-size: 0;
+    position: absolute;
+    top: 50%;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    transform: translate(0, -50%);
+    cursor: pointer;
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
+    z-index: 1001;
+    transition: all 0.3s ease;
+}
+
+/* Arrow Icons */
+.modal .slick-prev:before,
+.modal .slick-next:before {
+    font-family: 'Arial';
+    font-size: 32px;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.9);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modal .slick-prev:before {
+    content: '›';
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.modal .slick-next:before {
+    content: '›';
+}
+
+/* Hover Effects */
+.modal .slick-prev:hover:before,
+.modal .slick-next:hover:before {
+    color: #ffffff;
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+.modal .slick-prev:hover:before {
+    transform: translate(-50%, -50%) scale(1.2) rotate(180deg);
+}
+
+/* Positioning */
+.modal .slick-prev {
+    left: -60px;
+}
+
+.modal .slick-next {
+    right: -60px;
+}
+
+.caption {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #555;
+}
