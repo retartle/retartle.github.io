@@ -15,6 +15,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Slick Carousel CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 </head>
 <body>
 
@@ -145,32 +148,29 @@
     <!-- Modal -->
     <div id="myModal" class="modal">
         <span class="close">&times;</span>
-        <!-- Wrap the image in an anchor tag for linking to the full image -->
-        <a id="modalLink" href="#" target="_blank">
-            <img class="modal-content" id="img01">
-        </a>
-        <div id="caption"></div>
+        <div class="modal-carousel-container">
+            <!-- Empty carousel container that will be populated dynamically -->
+            <div class="modal-carousel"></div>
+            <div id="caption"></div>
+        </div>
     </div>
-
-
-        
 
 
     <!-- Footer and Contact Section -->
     <footer id="contact" class="acrylic no-hover text-center p-3">
         <h2>Contact</h2>
         <div class="social-icons mx-auto" style="max-width: 400px; display: flex; justify-content: center; gap: 20px;">
-            <a href="https://instagram.com/noelng06" target="_blank" aria-label="Instagram">
+            <a href="https://instagram.com/noelng06" target="_blank" aria-label="Instagram" title="Instagram">
                 <img src="assets/icons/instagram.png" alt="Instagram" style="width: 40px; height: 40px;">
             </a>
-            <a href="https://www.linkedin.com/in/noelngzhien/" target="_blank" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/noelngzhien/" target="_blank" aria-label="LinkedIn" title="LinkedIn">
                 <img src="assets/icons/linkedin.png" alt="LinkedIn" style="width: 40px; height: 40px;">
             </a>
-            <a href="https://github.com/retartle" target="_blank" aria-label="GitHub">
+            <a href="https://github.com/retartle" target="_blank" aria-label="GitHub" title="GitHub">
                 <img src="assets/icons/github.png" alt="GitHub" style="width: 40px; height: 40px;">
             </a>
         </div>
-
+        
         <div class="email-container" style="margin: 20px 0; font-size: 1rem;">
             <p>Email: 
                 <a href="mailto:noelngzhien1212@gmail.com" class="email-link">noelngzhien1212@gmail.com</a>
@@ -185,9 +185,12 @@
     </footer>
 
     
-
+    <!-- jQuery (required for Slick) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Slick Carousel JS -->
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <!-- Custom JS -->
     <script src="scripts.js"></script>
 </body>

@@ -259,12 +259,26 @@ body.dark-mode #darkModeToggle .toggle:before {
     z-index: 1001; 
 }
 
+/* Hamburger Menu Bars */
 .hamburger-menu .bar {
     width: 30px;
     height: 4px;
     margin: 5px 0;
     background-color: #333;
     transition: all 0.3s ease;
+}
+
+/* Hamburger to "X" Animation */
+.hamburger-menu .bar.active:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-menu .bar.active:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu .bar.active:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
 }
 
 /* Slide-in animation */
@@ -348,26 +362,6 @@ body.dark-mode #darkModeToggle .toggle:before {
     to {
         transform: translateY(-100%); 
     }
-}
-
-
-/* Hamburger bar animation when active (to create the "X" shape) */
-.hamburger-menu .bar.active:nth-child(1) {
-    transform: rotate(45deg);
-    position: relative;
-    top: 11px;
-    z-index: 2;
-}
-
-.hamburger-menu .bar.active:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger-menu .bar.active:nth-child(3) {
-    transform: rotate(-45deg);
-    position: relative;
-    top: -7px;
-    z-index: 1;
 }
 
 /* Ensure nav-icon class applies to the <a> tag */
@@ -460,10 +454,10 @@ body.dark-mode #darkModeToggle .toggle:before {
 
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
+    display: none;
     position: fixed; 
     z-index: 9999;
-    padding-top: 100px;
+    padding-top: 50px; /* Reduced from 100px to give more room for carousel */
     left: 0;
     top: 0;
     width: 100%; 
@@ -471,41 +465,46 @@ body.dark-mode #darkModeToggle .toggle:before {
     overflow: auto;
     background-color: rgba(0,0,0,0.9);
     animation: fadeIn 0.5s ease-out;
-  }
+}
 
-
-/* Modal Fade In Animation */
+/* Modal Animations */
 @keyframes fadeIn {
     0% { opacity: 0; }
     100% { opacity: 1; }
-  }
+}
   
-/* Modal Close Animation */
 @keyframes fadeOut {
     0% { opacity: 1; }
     100% { opacity: 0; }
-  }
-
-@keyframes zoomIn {
-  0% { transform: scale(0); }
-  100% { transform: scale(1); }
 }
 
+@keyframes zoomIn {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
+}
 
-/* Modal Content (Image) */
-.modal-content {
-    margin: 0;  /* Remove default margin */
-    display: block;
-    max-width: 100%;  /* Adjust to your preference */
-    max-height: 80vh; /* Adjust to your preference */
-    object-fit: contain; /* Ensure image retains aspect ratio */
+/* Modal Carousel Container */
+.modal-carousel-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
     animation: zoomIn 0.5s ease-out;
-    background: transparent;  /* Make sure the content background is transparent */
-    border: none;  /* Ensure no border */
-    cursor: pointer;
-  }
+}
 
-/* Caption of Modal Image (Image Text) */
+/* Modal Carousel Images */
+.modal-carousel img {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    object-fit: contain;
+    margin: 0 auto;
+    display: block;
+    background: transparent;
+    border: none;
+}
+
+/* Caption styling */
 #caption {
     margin: auto;
     display: block;
@@ -514,10 +513,11 @@ body.dark-mode #darkModeToggle .toggle:before {
     text-align: center;
     color: #bed3e5;
     padding: 10px 0;
-    height: 150px;
+    height: auto; /* Changed from fixed height */
+    min-height: 50px;
 }
 
-/* The Close Button */
+/* Close Button */
 .close {
     position: absolute;
     top: 15px;
@@ -526,6 +526,7 @@ body.dark-mode #darkModeToggle .toggle:before {
     font-size: 50px;
     font-weight: bold;
     transition: 0.3s;
+    z-index: 1002; /* Ensure it's above carousel controls */
 }
 
 .close:hover,
@@ -533,6 +534,67 @@ body.dark-mode #darkModeToggle .toggle:before {
     color: #bbb;
     text-decoration: none;
     cursor: pointer;
+}
+
+/* Enhanced Carousel Navigation Arrows */
+.modal .slick-prev,
+.modal .slick-next {
+    font-size: 0;
+    position: absolute;
+    top: 50%;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    transform: translate(0, -50%);
+    cursor: pointer;
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
+    z-index: 1001;
+    transition: all 0.3s ease;
+}
+
+/* Arrow Icons */
+.modal .slick-prev:before,
+.modal .slick-next:before {
+    font-family: 'Arial';
+    font-size: 32px;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.9);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modal .slick-prev:before {
+    content: '›';
+    transform: translate(-50%, -50%) rotate(180deg);
+}
+
+.modal .slick-next:before {
+    content: '›';
+}
+
+/* Hover Effects */
+.modal .slick-prev:hover:before,
+.modal .slick-next:hover:before {
+    color: #ffffff;
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+.modal .slick-prev:hover:before {
+    transform: translate(-50%, -50%) scale(1.2) rotate(180deg);
+}
+
+/* Positioning */
+.modal .slick-prev {
+    left: -60px;
+}
+
+.modal .slick-next {
+    right: -60px;
 }
 
 
@@ -627,9 +689,29 @@ body.dark-mode #darkModeToggle .toggle:before {
         font-size: 1rem;
     }
 
-    .modal-content {
-        max-width: 80%; /* Reduce width on mobile to 90% of the viewport */
-        max-height: 100vh; /* Adjust height for a better fit */
-        margin-left: 50px;
+    .modal {
+        padding-top: 20px;
     }
+
+    .modal-carousel-container {
+        width: 95%;
+    }
+
+    .modal .slick-prev,
+    .modal .slick-next {
+        display: none !important;
+    }
+
+    .close {
+        top: 10px;
+        right: 20px;
+        font-size: 40px;
+    }
+}
+
+.caption {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #555;
 }

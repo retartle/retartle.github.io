@@ -218,48 +218,87 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(document.getElementById("about"));
 });
 
-// Get the modal, image, caption, and modal link
+
+
+// Get the modal and other elements
 var modal = document.getElementById("myModal");
-var modalImg = document.getElementById("img01");
 var captionText = document.getElementById("caption");
-var modalLink = document.getElementById("modalLink");
-
-// Get all images with the 'gallery-img' class
 var images = document.querySelectorAll(".gallery-img");
+var modalCarousel = document.querySelector(".modal-carousel");
 
-// Loop through each image and add the onclick event
-images.forEach(function(image) {
-  image.onclick = function() {
-    modal.style.display = "block";
-    modal.style.animation = "fadeIn 0.5s ease-out"; // Trigger fade-in animation
-    modalImg.src = this.src;
-    captionText.innerHTML = this.alt;
-    // Set the modal link to the full-size image URL (you can replace 'this.src' with the full-size image URL if different)
-    modalLink.href = this.src; 
-  };
-});
+// Function to initialize the carousel
+function initModalCarousel() {
+    // Clear existing carousel content
+    modalCarousel.innerHTML = '';
+    
+    // Create carousel slides from gallery images
+    images.forEach(function(image) {
+        const slide = document.createElement('div');
+        const slideImg = document.createElement('img');
+        slideImg.src = image.src;
+        slideImg.alt = image.alt;
+        slide.appendChild(slideImg);
+        modalCarousel.appendChild(slide);
+    });
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-span.onclick = function() {
-  // Apply fade-out animation before hiding modal
-  modal.style.animation = "fadeOut 0.5s ease-out"; // Trigger fade-out animation
-
-  // Set a timeout to hide the modal after the animation ends
-  setTimeout(function() {
-    modal.style.display = "none";
-  }, 500); // Hide modal after 0.5 seconds (animation duration)
+    // Initialize Slick carousel
+    $(modalCarousel).slick({
+        dots: true,
+        infinite: true,
+        speed: 300,
+        slidesToShow: 1,
+        adaptiveHeight: true,
+        prevArrow: '<button type="button" class="slick-prev">Previous</button>',
+        nextArrow: '<button type="button" class="slick-next">Next</button>'
+    });
 }
 
-// Close modal when clicking anywhere on the modal (outside the image)
-modal.onclick = function(event) {
-  // Check if the click is outside the modal content
-  if (event.target === modal) {
-    // Apply fade-out animation before hiding modal
-    modal.style.animation = "fadeOut 0.5s ease-out"; // Trigger fade-out animation
-    setTimeout(function() {
-      modal.style.display = "none";
-    }, 500); // Hide modal after 0.5 seconds (animation duration)
-  }
+// Add click event to gallery images
+images.forEach(function(image, index) {
+    image.onclick = function() {
+        modal.style.display = "block";
+        modal.style.animation = "fadeIn 0.5s ease-out";
+        
+        // If carousel is not initialized, initialize it
+        if (!$(modalCarousel).hasClass('slick-initialized')) {
+            initModalCarousel();
+        }
+        
+        // Go to the clicked image
+        $(modalCarousel).slick('slickGoTo', index);
+        
+        // Update caption
+        captionText.innerHTML = this.alt;
+    };
+});
+
+// Handle close button
+var span = document.getElementsByClassName("close")[0];
+span.onclick = function() {
+    closeModal();
 };
+
+// Close when clicking outside
+modal.onclick = function(event) {
+    if (event.target === modal) {
+        closeModal();
+    }
+};
+
+// Function to close modal
+function closeModal() {
+    modal.style.animation = "fadeOut 0.5s ease-out";
+    setTimeout(function() {
+        modal.style.display = "none";
+        // Destroy the carousel when modal is closed
+        if ($(modalCarousel).hasClass('slick-initialized')) {
+            $(modalCarousel).slick('unslick');
+        }
+    }, 500);
+}
+
+// Update caption when slide changes
+$(document).on('afterChange', '.modal-carousel', function(event, slick, currentSlide) {
+    var currentImage = slick.$slides[currentSlide].querySelector('img');
+    captionText.innerHTML = currentImage.alt;
+});
