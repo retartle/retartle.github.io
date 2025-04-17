@@ -1,0 +1,144 @@
+/* --- About Me Section Styles --- */
+
+#about .row {
+    align-items: center; /* Vertically center items in the row */
+}
+
+/* Wrapper for parallax effect */
+.profile-picture-wrapper {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px; /* Match image width */
+    max-width: 100%;
+    transition: transform 0.1s linear;
+}
+
+
+.profile-picture {
+    /* --- Size --- */
+    width: 300px;
+    height: 300px;
+    max-width: 100%;
+
+    /* --- Shape & Content Fit --- */
+    object-fit: cover;
+    border-radius: 50%;
+
+    /* --- Aesthetics --- */
+    border: 4px solid #a1b4d3;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    /* Initial subtle shadow - will be animated */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.1);
+    display: block;
+
+    /* --- Refined Idle Float Animation --- */
+    /* Duration increased slightly, shadow added to animation */
+    animation: floatAnimation 7s ease-in-out infinite alternate;
+}
+
+/* Refined Keyframes for float animation with shadow */
+@keyframes floatAnimation {
+    0% {
+        transform: translateY(-4px); /* Reduced distance */
+        /* Shadow tighter when up */
+        box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.1);
+    }
+    100% {
+        transform: translateY(4px); /* Reduced distance */
+        /* Shadow slightly more diffuse when down */
+        box-shadow: 0px 10px 12px rgba(0, 0, 0, 0.12);
+    }
+}
+
+
+/* Dark Mode Profile Picture */
+body.dark-mode .profile-picture {
+     border-color: #6a7aa0;
+     background-color: rgba(0, 0, 0, 0.1);
+     /* Adjust dark mode shadow animation */
+     animation: floatAnimationDark 7s ease-in-out infinite alternate;
+}
+
+/* Dark mode shadow animation */
+@keyframes floatAnimationDark {
+     0% {
+        transform: translateY(-4px);
+        box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
+    }
+    100% {
+        transform: translateY(4px);
+        box-shadow: 0px 10px 12px rgba(0, 0, 0, 0.25);
+    }
+}
+
+
+/* About Me Text Styling */
+#about h5 {
+    color: #8896d3;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+body.dark-mode #about h5 {
+     color: #a5b0dd;
+}
+
+#about p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+/* About Me Skill Badges */
+.about-skills .badge {
+    margin-right: 6px;
+    margin-bottom: 6px;
+    font-size: 0.8rem;
+    padding: 0.4em 0.7em;
+    border: 1px solid transparent;
+    font-weight: 500;
+}
+
+/* Light Mode Skill Badges */
+.about-skills .badge {
+    background-color: #e0e7f5;
+    color: #4a5a7e;
+    border-color: #c4d0e5;
+}
+
+/* Dark Mode Skill Badges */
+body.dark-mode .about-skills .badge {
+    background-color: #4a5a7e;
+    color: #e0e7f5;
+    border-color: #6a7aa0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 767px) {
+    .profile-picture-wrapper {
+        width: 200px;
+    }
+
+    .profile-picture {
+        width: 200px;
+        height: 200px;
+        margin-bottom: 0;
+    }
+    .profile-picture-wrapper {
+         margin-bottom: 1.5rem;
+    }
+
+    #about .row { }
+    #about .col-md-8 {
+         text-align: center;
+    }
+    .about-skills {
+         justify-content: center;
+         display: flex;
+         flex-wrap: wrap;
+    }
+     #about h5 {
+         text-align: center;
+    }
+}

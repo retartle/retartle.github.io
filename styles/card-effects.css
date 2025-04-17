@@ -1,28 +1,34 @@
+/* Updated for Masonry Layout */
 .card-effect {
     position: relative;
-    overflow: hidden;
-    aspect-ratio: 4 / 3;
+    overflow: hidden; /* Keep overflow hidden for potential effects */
+    /* REMOVED aspect-ratio: 4 / 3; */
     border-radius: 10px;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: block; /* Ensure it behaves like a block */
 }
 
 .card-effect img {
     display: block;
-    width: 100%;
-    object-fit: cover;
+    width: 100%; /* Image scales with container */
+    height: auto; /* Height adjusts based on aspect ratio */
+    /* REMOVED object-fit: cover; */
     object-position: center;
     transition: transform 0.4s ease;
+    border-radius: 10px; /* Apply radius to image too */
 }
 
 .card-effect:hover {
-    transform: scale(1.05); 
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transform: scale(1.03); /* Slightly less scaling */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Adjusted shadow */
     cursor: pointer;
 }
 
+/* Optional: Remove image scaling on hover if it looks odd with masonry */
 .card-effect:hover img {
-    transform: scale(1.1); 
+     transform: none; /* Keep image scale static on hover */
+     /* transform: scale(1.05); */ /* Or keep a smaller scale */
 }
 
 /* Optional: Add a subtle glow or highlight effect */
@@ -38,8 +44,17 @@
     transition: opacity 0.4s ease;
     z-index: 1;
     pointer-events: none;
+    border-radius: 10px; /* Match parent radius */
 }
 
 .card-effect:hover:before {
     opacity: 1;
+}
+
+/* Ensure dark mode compatibility if needed */
+body.dark-mode .card-effect {
+     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+body.dark-mode .card-effect:hover {
+     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
 }

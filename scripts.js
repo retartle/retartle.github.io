@@ -1,436 +1,449 @@
 // Highlight active navbar link on scroll
 window.addEventListener('scroll', () => {
     const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('nav ul li a');
+    // Adjust selector if mobile nav links are different
+    const navLinks = document.querySelectorAll('.nav-container .nav-link, .mobile-nav .nav-link');
+    let currentSectionId = null;
+    const scrollY = window.scrollY; // Get scroll position
 
-    sections.forEach((section, index) => {
+    sections.forEach((section) => {
         const rect = section.getBoundingClientRect();
-        if (rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 2) {
-            navLinks.forEach(link => link.classList.remove('active'));
-            navLinks[index].classList.add('active');
+        // Check if section is roughly in the middle of the viewport
+        // Adjusted logic: Check if section top is above middle and bottom is below top
+        if (rect.top <= window.innerHeight / 2 && rect.bottom >= 0) {
+             // Prioritize section closest to the top of the viewport within the upper half
+             if (currentSectionId === null || rect.top > document.getElementById(currentSectionId).getBoundingClientRect().top) {
+                  if (rect.top <= 100) { // Give priority if close to top
+                     currentSectionId = section.getAttribute('id');
+                  } else if (currentSectionId === null) { // Otherwise, take the first one found in the upper half
+                     currentSectionId = section.getAttribute('id');
+                  }
+             }
+        }
+    });
+
+     // If no section is detected in the upper half (e.g., at the very top or bottom)
+    if (currentSectionId === null) {
+        if (scrollY < window.innerHeight / 3) { // If near the top
+            currentSectionId = 'hero';
+        } else {
+             // Could add logic for bottom, but often footer isn't a nav target
+        }
+    }
+
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        const linkHref = link.getAttribute('href');
+        // Check if the link's href matches the current section ID
+        if (linkHref === `#${currentSectionId}`) {
+            link.classList.add('active');
+        // Special case for the home link (#) when the hero section is active
+        } else if (currentSectionId === 'hero' && linkHref === '#') {
+             link.classList.add('active');
         }
     });
 });
 
+
 document.addEventListener("DOMContentLoaded", () => {
+
+    // --- REMOVED: Project Details Data ---
+
     const heroSection = document.querySelector('.hero-section');
     const parallaxBackground = document.querySelector('.parallax-background');
     const parallaxElements = document.querySelectorAll('.parallax-element');
-
-    // Hero section scroll effect
-    window.addEventListener('scroll', () => {
-        let scrollPosition = window.pageYOffset;
-
-        // Parallax effect for background
-        parallaxBackground.style.transform = `translateY(${scrollPosition * 0.3}px)`;  /* Adjust the speed (0.3) for desired effect */
-        
-        // Parallax effect for inner elements (e.g., scale, translate)
-        parallaxElements.forEach(element => {
-            element.style.transform = `translateY(${scrollPosition * 0.1}px)`;  /* Inner elements move at a slower speed */
-        });
-    });
 
     // Dark mode toggle functionality
     const toggle = document.getElementById("darkModeToggle");
     const body = document.body;
 
+    // Function to apply mode
+    const applyMode = (mode) => {
+        if (mode === "dark") {
+            body.classList.add("dark-mode");
+            body.classList.remove("light-mode");
+        } else {
+            body.classList.add("light-mode");
+            body.classList.remove("dark-mode");
+        }
+        // Re-layout Masonry grids after mode change (slight delay for transition)
+        setTimeout(() => {
+            document.querySelectorAll('.hobby-gallery-grid').forEach(grid => {
+                const msnryInstance = Masonry.data(grid);
+                if (msnryInstance) {
+                    msnryInstance.layout();
+                }
+            });
+        }, 400); // Adjust delay if needed
+    };
+
     // Load the mode from localStorage
-    if (localStorage.getItem("mode") === "dark") {
-        body.classList.add("dark-mode");
-        body.classList.remove("light-mode");
-    } else {
-        body.classList.add("light-mode");
-        body.classList.remove("dark-mode");
-    }
+    const savedMode = localStorage.getItem("mode") || "light"; // Default to light mode
+    applyMode(savedMode);
+
 
     // Toggle dark mode on click
-    toggle.addEventListener("click", () => {
-        if (body.classList.contains("light-mode")) {
-            body.classList.remove("light-mode");
-            body.classList.add("dark-mode");
-            localStorage.setItem("mode", "dark");
-        } else {
-            body.classList.remove("dark-mode");
-            body.classList.add("light-mode");
-            localStorage.setItem("mode", "light");
-        }
-    });
-});
-
-// JavaScript to handle scroll effect
-document.addEventListener("scroll", function() {
-    const navContainer = document.querySelector(".nav-container");
-    const scrollY = window.scrollY;
-
-    // Toggle the "scrolled" class when the page is scrolled 50px or more
-    if (scrollY > 50) {
-        navContainer.classList.add("scrolled");
-    } else {
-        navContainer.classList.remove("scrolled");
+    if (toggle) {
+        toggle.addEventListener("click", () => {
+            const newMode = body.classList.contains("light-mode") ? "dark" : "light";
+            applyMode(newMode);
+            localStorage.setItem("mode", newMode);
+        });
     }
-});
+
+    // Navbar scroll effect
+    const navContainer = document.querySelector(".nav-container");
+    if (navContainer) {
+        // Use requestAnimationFrame for smoother scroll animations
+        let lastScrollY = window.scrollY;
+        let ticking = false;
+
+        function updateNavbarScroll() {
+            const scrollY = window.scrollY;
+            if (scrollY > 50) {
+                navContainer.classList.add("scrolled");
+            } else {
+                navContainer.classList.remove("scrolled");
+            }
+            ticking = false;
+        }
+
+        window.addEventListener("scroll", function() {
+             lastScrollY = window.scrollY;
+             if (!ticking) {
+                 window.requestAnimationFrame(updateNavbarScroll);
+                 ticking = true;
+             }
+        });
+    }
 
 
-// Hamburger menu toggle functionality
-document.getElementById('hamburgerMenu').addEventListener('click', () => {
+    // Hamburger menu toggle functionality
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
     const mobileNav = document.getElementById('mobileNav');
     const bars = document.querySelectorAll('.hamburger-menu .bar');
 
-    // If navbar is already active, trigger closing animation
-    if (mobileNav.classList.contains('active')) {
-        mobileNav.classList.add('closing'); // Add the closing animation
-        // Wait for the animation to finish before removing the active state
-        setTimeout(() => {
-            mobileNav.classList.remove('active', 'closing'); // Remove active and closing class
-        }, 300); // 300ms is the duration of the slide-out animation
-    } else {
-        mobileNav.classList.add('active'); // Show navbar
-        mobileNav.classList.remove('closing'); // Ensure no closing animation
-    }
-
-    // Toggle the hamburger button (change to "X" shape)
-    bars.forEach(bar => bar.classList.toggle('active'));
-});
-
-// Close the mobile navbar when clicking on a nav link or anywhere inside the navbar
-document.querySelectorAll('.mobile-nav ul li a').forEach(link => {
-    link.addEventListener('click', function() {
-        const mobileNav = document.getElementById('mobileNav');
-        const bars = document.querySelectorAll('.hamburger-menu .bar');
-
-        mobileNav.classList.add('closing'); // Trigger closing animation
-
-        // Wait for the animation to finish before removing the active state
-        setTimeout(() => {
-            mobileNav.classList.remove('active', 'closing');
-        }, 300); // Same duration as slide-out animation
-
-        // Reset hamburger menu animation
-        bars.forEach(bar => bar.classList.remove('active'));
-    });
-});
-
-// Close the mobile navbar when clicking anywhere inside the navbar
-document.querySelector('.mobile-nav').addEventListener('click', function(e) {
-    if (e.target === this || e.target.tagName === 'A') {
-        const mobileNav = this;
-        const bars = document.querySelectorAll('.hamburger-menu .bar');
-        
-        mobileNav.classList.add('closing'); // Trigger closing animation
-
-        setTimeout(() => {
-            mobileNav.classList.remove('active', 'closing'); // Remove classes after animation
-        }, 300); // Same duration as slide-out animation
-
-        bars.forEach(bar => bar.classList.remove('active')); // Reset hamburger menu
-    }
-});
-
-// Close the mobile navbar when clicking anywhere outside the navbar
-document.addEventListener('click', function(e) {
-    const mobileNav = document.getElementById('mobileNav');
-    const navToggle = document.getElementById('hamburgerMenu'); // Ensure correct toggle ID
-
-    // Close the navbar only if the click was outside the navbar or the toggle button
-    if (!mobileNav.contains(e.target) && !navToggle.contains(e.target)) {
-        mobileNav.classList.add('closing'); // Trigger closing animation
-
-        setTimeout(() => {
-            mobileNav.classList.remove('active', 'closing');
-        }, 300); // Same duration as slide-out animation
-    }
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    const elementsToAnimate = document.querySelectorAll('[data-animate]');
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('in-view');
-                observer.unobserve(entry.target); // Stop observing once in view
-            }
+    if (hamburgerMenu && mobileNav && bars.length > 0) {
+        hamburgerMenu.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleMobileNav();
         });
-    }, {
-        threshold: 0.1, // Trigger when 10% of the element is visible
-    });
-
-    elementsToAnimate.forEach((el) => observer.observe(el));
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    const dynamicWordElement = document.getElementById("dynamic-word");
-    const words = ["fun", "unique", "challenging", "exciting", "innovative", "experimental"];// Words to cycle through
-    let currentWordIndex = 0;
-    let isTyping = false; // To track if animation is already running
-
-    const typeEffect = (word, callback) => {
-        let charIndex = 0;
-        const interval = setInterval(() => {
-            dynamicWordElement.textContent = word.slice(0, charIndex + 1);
-            charIndex++;
-            if (charIndex === word.length) {
-                clearInterval(interval);
-                setTimeout(callback, 1000); // Pause before deleting
-            }
-        }, 100); // Typing speed
-    };
-
-    const deleteEffect = (callback) => {
-        let word = dynamicWordElement.textContent;
-        let charIndex = word.length;
-        const interval = setInterval(() => {
-            dynamicWordElement.textContent = word.slice(0, charIndex - 1);
-            charIndex--;
-            if (charIndex === 0) {
-                clearInterval(interval);
-                callback();
-            }
-        }, 50); // Deleting speed
-    };
-
-    const cycleWords = () => {
-        if (!isTyping) {
-            isTyping = true; // Prevent multiple cycles from starting
-            typeEffect(words[currentWordIndex], () => {
-                deleteEffect(() => {
-                    currentWordIndex = (currentWordIndex + 1) % words.length; // Move to the next word
-                    isTyping = false; // Allow new cycle when necessary
-                    cycleWords(); // Continue cycling
-                });
-            });
-        }
-    };
-
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    if (!isTyping) {
-                        cycleWords(); // Start animation when section enters viewport
-                    }
+        document.querySelectorAll('.mobile-nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (mobileNav.classList.contains('active')) {
+                    closeMobileNavWithAnimation();
                 }
             });
-        },
-        { threshold: 0.5 } // Trigger when 50% of the section is visible
-    );
-
-    observer.observe(document.getElementById("about"));
-});
-
-
-
-// Get the modal and other elements
-var modal = document.getElementById("myModal");
-var captionText = document.getElementById("caption");
-var images = document.querySelectorAll(".gallery-img");
-var modalCarousel = document.querySelector(".modal-carousel");
-
-// Function to initialize the carousel
-function initModalCarousel() {
-    // Clear existing carousel content
-    modalCarousel.innerHTML = '';
-    
-    // Create carousel slides from gallery images
-    images.forEach(function(image) {
-        const slide = document.createElement('div');
-        const slideImg = document.createElement('img');
-        slideImg.src = image.src;
-        slideImg.alt = image.alt;
-        slide.appendChild(slideImg);
-        modalCarousel.appendChild(slide);
-    });
-
-    // Initialize Slick carousel
-    $(modalCarousel).slick({
-        dots: true,
-        infinite: true,
-        speed: 300,
-        slidesToShow: 1,
-        adaptiveHeight: true,
-        prevArrow: '<button type="button" class="slick-prev">Previous</button>',
-        nextArrow: '<button type="button" class="slick-next">Next</button>'
-    });
-}
-
-// Add click event to gallery images
-images.forEach(function(image, index) {
-    image.onclick = function() {
-        modal.style.display = "block";
-        modal.style.animation = "fadeIn 0.5s ease-out";
-        
-        // If carousel is not initialized, initialize it
-        if (!$(modalCarousel).hasClass('slick-initialized')) {
-            initModalCarousel();
-        }
-        
-        // Go to the clicked image
-        $(modalCarousel).slick('slickGoTo', index);
-        
-        // Update caption
-        captionText.innerHTML = this.alt;
-    };
-});
-
-// Handle close button
-var span = document.getElementsByClassName("close")[0];
-span.onclick = function() {
-    closeModal();
-};
-
-// Close when clicking outside
-modal.onclick = function(event) {
-    if (event.target === modal) {
-        closeModal();
-    }
-};
-
-// Function to close modal
-function closeModal() {
-    modal.style.animation = "fadeOut 0.5s ease-out";
-    setTimeout(function() {
-        modal.style.display = "none";
-        // Destroy the carousel when modal is closed
-        if ($(modalCarousel).hasClass('slick-initialized')) {
-            $(modalCarousel).slick('unslick');
-        }
-    }, 500);
-}
-
-// Update caption when slide changes
-$(document).on('afterChange', '.modal-carousel', function(event, slick, currentSlide) {
-    var currentImage = slick.$slides[currentSlide].querySelector('img');
-    captionText.innerHTML = currentImage.alt;
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    const dynamicWordElement = document.getElementById("dynamic-word-hero");
-    const words = ["AI", "Cybersecurity", "Pentesting", "Sweeping Floors", "Networking", "Digital Forensics"];
-    let currentWordIndex = 0;
-
-    // Set the first word immediately
-    dynamicWordElement.textContent = words[currentWordIndex];
-    dynamicWordElement.style.opacity = 1; // Make sure the first word is visible
-
-    const typeEffect = (word, callback) => {
-        dynamicWordElement.textContent = word;
-        dynamicWordElement.style.opacity = 1; // Fade in the new word
-
-        setTimeout(callback, 1500); // Pause before fading out
-    };
-
-    const fadeOutEffect = (callback) => {
-        dynamicWordElement.style.opacity = 0; // Fade out the word
-
-        setTimeout(callback, 1000); // Wait for the fade to finish
-    };
-
-    const cycleWords = () => {
-        fadeOutEffect(() => {
-            currentWordIndex = (currentWordIndex + 1) % words.length;
-            typeEffect(words[currentWordIndex], cycleWords); // Continue cycling words
         });
-    };
-
-    cycleWords(); // Start immediately without waiting for the observer
-});
-
-class BubbleBackground {
-    constructor(options = {}) {
-        this.options = {
-            containerId: 'bubble-container',
-            minSize: 10,          // Minimum bubble size in pixels
-            maxSize: 30,          // Maximum bubble size in pixels
-            minDuration: 15,      // Minimum animation duration in seconds
-            maxDuration: 30,      // Maximum animation duration in seconds
-            bubbleCount: 20,      // Number of bubbles
-            spawnInterval: 3000,  // Time between bubble spawns in milliseconds
-            parallaxFactor: 0.2,  // Adjust this value to control the parallax effect
-            ...options
-        };
-        
-        this.container = document.getElementById(this.options.containerId);
-        this.bubbles = new Set();
-        this.init();
-        this.initParallax();
-    }
-
-    createBubble() {
-        // Create a wrapper for the bubble
-        const wrapper = document.createElement('div');
-        wrapper.className = 'bubble-wrapper';
-        // Ensure the wrapper covers the container and doesn't interfere with interactions
-        wrapper.style.position = 'absolute';
-        wrapper.style.top = '0';
-        wrapper.style.left = '0';
-        wrapper.style.width = '100%';
-        wrapper.style.height = '100%';
-        wrapper.style.pointerEvents = 'none';
-
-        // Create the bubble itself
-        const bubble = document.createElement('div');
-        bubble.className = 'bubble';
-        
-        // Random size between minSize and maxSize
-        const size = Math.random() * (this.options.maxSize - this.options.minSize) + this.options.minSize;
-        bubble.style.width = `${size}px`;
-        bubble.style.height = `${size}px`;
-        
-        // Random horizontal position (within 100% width)
-        bubble.style.left = `${Math.random() * 100}%`;
-        
-        // Set a random animation duration using CSS variable
-        const duration = Math.random() * (this.options.maxDuration - this.options.minDuration) + this.options.minDuration;
-        bubble.style.setProperty('--duration', `${duration}s`);
-        
-        // Append the bubble to the wrapper, then the wrapper to the container
-        wrapper.appendChild(bubble);
-        this.container.appendChild(wrapper);
-        this.bubbles.add(wrapper);
-        
-        // Remove bubble after animation completes
-        bubble.addEventListener('animationend', () => {
-            wrapper.remove();
-            this.bubbles.delete(wrapper);
-        });
-    }
-
-    init() {
-        // Create initial bubbles
-        for (let i = 0; i < this.options.bubbleCount; i++) {
-            setTimeout(() => {
-                this.createBubble();
-            }, Math.random() * 5000);
-        }
-        
-        // Continuously spawn bubbles
-        setInterval(() => {
-            if (this.bubbles.size < this.options.bubbleCount) {
-                this.createBubble();
+        mobileNav.addEventListener('click', function(e) {
+            if (e.target === this) {
+                 closeMobileNavWithAnimation();
             }
-        }, this.options.spawnInterval);
-    }
-    
-    initParallax() {
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            this.bubbles.forEach(wrapper => {
-                // Move the wrapper based on scroll; adjust the factor as needed
-                wrapper.style.transform = `translateY(${scrollY * this.options.parallaxFactor}px)`;
-            });
+        });
+        document.addEventListener('click', function(e) {
+            if (mobileNav.classList.contains('active') && !mobileNav.contains(e.target) && !hamburgerMenu.contains(e.target)) {
+                closeMobileNavWithAnimation();
+            }
         });
     }
-}
 
-// Initialize when the document is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    new BubbleBackground({
-        minSize: 10,
-        maxSize: 30,
-        minDuration: 15,
-        maxDuration: 30,
-        bubbleCount: 20,
-        spawnInterval: 3000,
-        parallaxFactor: 0.2  // Experiment with this value
+    function toggleMobileNav() {
+         if (mobileNav.classList.contains('active')) {
+            closeMobileNavWithAnimation();
+        } else {
+            mobileNav.classList.add('active');
+            mobileNav.classList.remove('closing');
+            bars.forEach(bar => bar.classList.add('active'));
+        }
+    }
+
+    function closeMobileNavWithAnimation() {
+        mobileNav.classList.add('closing');
+        bars.forEach(bar => bar.classList.remove('active'));
+        setTimeout(() => {
+            mobileNav.classList.remove('active', 'closing');
+        }, 300);
+    }
+
+
+    // Intersection Observer for animations
+    const elementsToAnimate = document.querySelectorAll('[data-animate]');
+    if (elementsToAnimate.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    // If the intersecting element is a Masonry item, layout the grid
+                    const grid = entry.target.closest('.hobby-gallery-grid');
+                    if (grid) {
+                        const msnryInstance = Masonry.data(grid);
+                        if (msnryInstance) {
+                            // Use a small delay to ensure the element is fully visible
+                            setTimeout(() => msnryInstance.layout(), 50);
+                        }
+                    }
+                    observer.unobserve(entry.target); // Unobserve after first animation
+                }
+            });
+        }, { threshold: 0.1 }); // Trigger when 10% visible
+        elementsToAnimate.forEach((el) => observer.observe(el));
+    }
+
+
+    // Dynamic word fade effect for Hero section
+    const dynamicWordElementHero = document.getElementById("dynamic-word-hero");
+    if (dynamicWordElementHero) {
+        const wordsHero = ["AI", "Cybersecurity", "Pentesting", "Networking", "Digital Forensics", "Web Development"];
+        let currentWordIndexHero = 0;
+        dynamicWordElementHero.textContent = wordsHero[currentWordIndexHero];
+        dynamicWordElementHero.style.opacity = 1;
+
+        const typeEffectHero = (word, callback) => {
+            dynamicWordElementHero.textContent = word;
+            dynamicWordElementHero.style.transition = 'opacity 0.5s ease-in-out';
+            dynamicWordElementHero.style.opacity = 1;
+            setTimeout(callback, 2000);
+        };
+        const fadeOutEffectHero = (callback) => {
+            dynamicWordElementHero.style.opacity = 0;
+            setTimeout(callback, 500);
+        };
+        const cycleWordsHero = () => {
+            fadeOutEffectHero(() => {
+                currentWordIndexHero = (currentWordIndexHero + 1) % wordsHero.length;
+                typeEffectHero(wordsHero[currentWordIndexHero], cycleWordsHero);
+            });
+        };
+        setTimeout(cycleWordsHero, 1000);
+    }
+
+
+    // Hobby Gallery Modal and Carousel Functionality (Keep separate)
+    var hobbyModal = document.getElementById("myModal"); // Use specific ID if needed
+    var hobbyCaptionText = document.getElementById("caption");
+    var hobbyImages = document.querySelectorAll(".gallery-img"); // Select hobby gallery images
+    var hobbyModalCarousel = document.querySelector(".modal-carousel");
+    var hobbyCloseBtn = document.querySelector("#myModal .close"); // Scope close button
+
+    if (hobbyModal && hobbyCaptionText && hobbyImages.length > 0 && hobbyModalCarousel && hobbyCloseBtn) {
+        const allHobbyGalleryImages = Array.from(hobbyImages).map(img => ({ src: img.src, alt: img.alt }));
+
+        function initHobbyModalCarousel(initialIndex) {
+             if ($(hobbyModalCarousel).hasClass('slick-initialized')) {
+                 $(hobbyModalCarousel).slick('unslick');
+             }
+             hobbyModalCarousel.innerHTML = '';
+             allHobbyGalleryImages.forEach(function(imageData) {
+                const slide = document.createElement('div');
+                const slideImg = document.createElement('img');
+                slideImg.src = imageData.src;
+                slideImg.alt = imageData.alt;
+                slide.appendChild(slideImg);
+                hobbyModalCarousel.appendChild(slide);
+            });
+            $(hobbyModalCarousel).slick({
+                dots: true, infinite: true, speed: 300, slidesToShow: 1, adaptiveHeight: true,
+                initialSlide: initialIndex,
+                prevArrow: '<button type="button" class="slick-prev">Previous</button>',
+                nextArrow: '<button type="button" class="slick-next">Next</button>'
+            });
+             if (allHobbyGalleryImages[initialIndex]) {
+                 hobbyCaptionText.innerHTML = allHobbyGalleryImages[initialIndex].alt;
+             }
+        }
+
+        document.querySelectorAll('#hobbies .card-effect').forEach(function(card) { // Target hobby cards
+            card.onclick = function() {
+                const clickedImg = card.querySelector('.gallery-img');
+                if (!clickedImg) return;
+                const clickedIndex = allHobbyGalleryImages.findIndex(imgData => imgData.src === clickedImg.src);
+                hobbyModal.style.display = "block";
+                hobbyModal.style.animation = "fadeIn 0.5s ease-out";
+                initHobbyModalCarousel(clickedIndex >= 0 ? clickedIndex : 0);
+            };
+        });
+
+        hobbyCloseBtn.onclick = function() { closeHobbyModal(); };
+        hobbyModal.onclick = function(event) { if (event.target === hobbyModal) { closeHobbyModal(); } };
+
+        function closeHobbyModal() {
+            hobbyModal.style.animation = "fadeOut 0.5s ease-out";
+            setTimeout(function() { hobbyModal.style.display = "none"; }, 450);
+        }
+
+        $(hobbyModalCarousel).on('afterChange', function(event, slick, currentSlide) {
+             if (allHobbyGalleryImages[currentSlide]) {
+                 hobbyCaptionText.innerHTML = allHobbyGalleryImages[currentSlide].alt;
+             }
+        });
+    }
+
+
+    // --- Bubble Background Effect ---
+    class BubbleBackground {
+        constructor(options = {}) {
+            this.options = {
+                containerId: 'bubble-container', minSize: 10, maxSize: 30,
+                minDuration: 15, maxDuration: 30, bubbleCount: 20,
+                spawnInterval: 3000, parallaxFactor: 0.2, ...options };
+            this.container = document.getElementById(this.options.containerId);
+            if (!this.container) { console.error(`Bubble container #${this.options.containerId} not found.`); return; }
+            this.bubbles = new Set(); this.init(); this.initParallax();
+        }
+        createBubble() {
+            const wrapper = document.createElement('div'); wrapper.className = 'bubble-wrapper';
+            const bubble = document.createElement('div'); bubble.className = 'bubble';
+            const size = Math.random() * (this.options.maxSize - this.options.minSize) + this.options.minSize;
+            bubble.style.setProperty('--size', `${size}px`);
+            const left = Math.random() * 100; bubble.style.setProperty('--left', `${left}%`);
+            const duration = Math.random() * (this.options.maxDuration - this.options.minDuration) + this.options.minDuration;
+            bubble.style.setProperty('--duration', `${duration}s`);
+            wrapper.appendChild(bubble); this.container.appendChild(wrapper); this.bubbles.add(wrapper);
+            bubble.addEventListener('animationend', () => {
+                 if (wrapper.parentNode) { wrapper.remove(); this.bubbles.delete(wrapper); }
+            }, { once: true });
+        }
+        init() {
+            for (let i = 0; i < this.options.bubbleCount; i++) { setTimeout(() => { this.createBubble(); }, Math.random() * 5000); }
+            this.spawnIntervalId = setInterval(() => { if (this.bubbles.size < this.options.bubbleCount * 1.5) { this.createBubble(); } }, this.options.spawnInterval);
+        }
+        initParallax() {
+            this.scrollListener = () => { const scrollY = window.scrollY; this.bubbles.forEach(wrapper => { if (document.body.contains(wrapper)) { wrapper.style.transform = `translateY(${scrollY * this.options.parallaxFactor}px)`; } }); };
+             window.addEventListener('scroll', this.scrollListener);
+        }
+        destroy() { clearInterval(this.spawnIntervalId); window.removeEventListener('scroll', this.scrollListener); this.bubbles.forEach(wrapper => wrapper.remove()); this.bubbles.clear(); }
+    }
+    new BubbleBackground({ bubbleCount: 25, spawnInterval: 2500 });
+    // --- End Bubble Background Effect ---
+
+
+    // Fetch GitHub Repo Update Dates
+    async function fetchRepoUpdateDates() {
+        const projectCards = document.querySelectorAll('.project-card[data-repo]');
+        for (const card of projectCards) {
+            const repoName = card.dataset.repo;
+            const updateDateElement = card.querySelector('.update-date');
+            if (!repoName || !updateDateElement) continue;
+            const apiUrl = `https://api.github.com/repos/${repoName}/commits?per_page=1`;
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) {
+                    if (response.status === 404) { updateDateElement.textContent = 'Repo not found'; }
+                    else if (response.status === 403) { updateDateElement.textContent = 'API limit hit'; }
+                    else { updateDateElement.textContent = 'Error fetching'; }
+                    console.warn(`Error fetching ${repoName}: ${response.status}`); continue;
+                }
+                const data = await response.json();
+                if (data && data.length > 0 && data[0].commit && data[0].commit.committer) {
+                    const lastCommitDate = new Date(data[0].commit.committer.date);
+                    updateDateElement.textContent = lastCommitDate.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+                } else { updateDateElement.textContent = 'No commits'; }
+            } catch (error) {
+                updateDateElement.textContent = 'Network error';
+                console.error(`Network error fetching ${repoName}:`, error);
+            }
+        }
+    }
+    fetchRepoUpdateDates();
+
+
+    // Subtle Parallax Effect for Profile Picture
+    const profilePicWrapper = document.querySelector('.profile-picture-wrapper');
+    if (profilePicWrapper) {
+        const initialTopOffset = profilePicWrapper.getBoundingClientRect().top + window.scrollY;
+        let tickingParallax = false;
+        function updateProfilePicParallax() {
+             const scrollY = window.scrollY; const parallaxOffset = (scrollY - initialTopOffset) * 0.07;
+             if (scrollY > initialTopOffset - window.innerHeight && scrollY < initialTopOffset + profilePicWrapper.offsetHeight) { profilePicWrapper.style.transform = `translateY(${parallaxOffset}px)`; }
+             else { profilePicWrapper.style.transform = `translateY(0px)`; }
+             tickingParallax = false;
+        }
+        window.addEventListener('scroll', () => { if (!tickingParallax) { window.requestAnimationFrame(updateProfilePicParallax); tickingParallax = true; } });
+    }
+
+
+     // General Parallax for Hero Section
+     function handleHeroParallax() {
+        let scrollPosition = window.pageYOffset;
+        if (parallaxBackground) { parallaxBackground.style.transform = `translateY(${scrollPosition * 0.3}px)`; }
+        parallaxElements.forEach(element => { element.style.transform = `translateY(${scrollPosition * 0.1}px)`; });
+     }
+     let heroTicking = false;
+     function updateHeroParallax() { handleHeroParallax(); heroTicking = false; }
+     if (heroSection || parallaxBackground || parallaxElements.length > 0) {
+         window.addEventListener('scroll', () => { if (!heroTicking) { window.requestAnimationFrame(updateHeroParallax); heroTicking = true; } });
+         handleHeroParallax();
+     }
+
+    // Masonry Initialization (Gutter set to 0)
+    document.querySelectorAll('.hobby-gallery-grid').forEach(gridElement => {
+        imagesLoaded(gridElement, function() {
+            const msnry = new Masonry(gridElement, { itemSelector: '.gallery-item', columnWidth: '.gallery-item', percentPosition: true, gutter: 0 });
+            gridElement.style.opacity = 1;
+        });
     });
-});
+
+
+    // --- Timeline Scroll Animation (Smoothed with Lerp) ---
+    const educationSection = document.getElementById('education');
+    const timelineProgress = document.querySelector('.timeline-progress');
+    const timelineIndicator = document.querySelector('.timeline-indicator');
+    const timelineItems = document.querySelectorAll('#education .timeline-item');
+    const timelineContainer = document.querySelector('#education .timeline');
+    let timelineTicking = false;
+    let targetProgress = 0; let currentProgressHeight = 0; let currentIndicatorTop = 0;
+    const easingFactor = 0.1;
+    let itemPositions = [];
+
+    function calculateItemPositions() {
+        itemPositions = []; if (!timelineContainer) return;
+        const timelineRect = timelineContainer.getBoundingClientRect(); const timelineScrollY = window.scrollY + timelineRect.top;
+        timelineItems.forEach(item => {
+            const itemRect = item.getBoundingClientRect(); const itemTopAbsolute = window.scrollY + itemRect.top;
+            const relativeTop = itemTopAbsolute - timelineScrollY; const relativeCenter = relativeTop + (item.offsetHeight / 2);
+            const timelineHeight = timelineContainer.offsetHeight - parseInt(window.getComputedStyle(timelineContainer).paddingBottom);
+            const centerPercent = timelineHeight > 0 ? (relativeCenter / timelineHeight) * 100 : 0;
+            itemPositions.push({ element: item.querySelector('.timeline-content'), centerPercent: centerPercent });
+        });
+    }
+
+    function animationLoop() {
+        if (!timelineProgress || !timelineIndicator) return;
+        const diffHeight = targetProgress - currentProgressHeight; const diffTop = targetProgress - currentIndicatorTop;
+        if (Math.abs(diffHeight) < 0.1 && Math.abs(diffTop) < 0.1) {
+            currentProgressHeight = targetProgress; currentIndicatorTop = targetProgress;
+        } else {
+            currentProgressHeight += diffHeight * easingFactor; currentIndicatorTop += diffTop * easingFactor;
+            requestAnimationFrame(animationLoop);
+        }
+        timelineProgress.style.height = currentProgressHeight + '%'; timelineIndicator.style.top = currentIndicatorTop + '%';
+        timelineIndicator.style.opacity = targetProgress > 1 && targetProgress < 99 ? '1' : '0';
+        const activationThresholdPercent = 5;
+        itemPositions.forEach(itemData => {
+            if (Math.abs(itemData.centerPercent - currentIndicatorTop) < activationThresholdPercent) {
+                if (itemData.element && !itemData.element.classList.contains('dot-active')) { itemData.element.classList.add('dot-active'); }
+            } else {
+                if (itemData.element && itemData.element.classList.contains('dot-active')) { itemData.element.classList.remove('dot-active'); }
+            }
+        });
+        timelineTicking = false;
+    }
+
+    function handleScroll() {
+        if (!educationSection || !timelineContainer) { timelineTicking = false; return; }
+        const sectionRect = educationSection.getBoundingClientRect(); const sectionHeight = educationSection.offsetHeight; const viewportHeight = window.innerHeight;
+        const totalScrollRange = sectionHeight + viewportHeight; const currentScroll = -sectionRect.top + viewportHeight;
+        let progress = 0; if (totalScrollRange > 0) { progress = (currentScroll / totalScrollRange) * 100; }
+        targetProgress = Math.max(0, Math.min(100, progress));
+        if (!timelineTicking) { timelineTicking = true; requestAnimationFrame(animationLoop); }
+    }
+    window.addEventListener('scroll', handleScroll);
+    calculateItemPositions(); handleScroll();
+    // --- END Timeline Scroll Animation ---
+
+
+    // --- REMOVED: Project Modal Population ---
+
+
+}); // End DOMContentLoaded

@@ -8,35 +8,24 @@
 
     <title>Noel's website</title>
     <link rel="icon" href="assets\images\title.jpg" type="image/x-icon">
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <!-- Google Fonts (for custom fonts) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
-    <!-- Custom CSS -->
-    
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/dark-light-mode.css">
     <link rel="stylesheet" href="styles/acrylic-style.css">
-    <link rel="stylesheet" href="styles/dark-mode-toggle.css">
+    <link rel="stylesheet" href="styles/animations.css"> <link rel="stylesheet" href="styles/dark-mode-toggle.css">
     <link rel="stylesheet" href="styles/hero-section.css">
     <link rel="stylesheet" href="styles/navbar.css">
-    <link rel="stylesheet" href="styles/mobile.css">
-    <link rel="stylesheet" href="styles/icons.css">
+    <link rel="stylesheet" href="styles/mobile.css"> <link rel="stylesheet" href="styles/icons.css">
     <link rel="stylesheet" href="styles/hamburger-menu.css">
-    <link rel="stylesheet" href="styles/animations.css">
-    <link rel="stylesheet" href="styles/modal.css">
-    <link rel="stylesheet" href="styles/card-effects.css">
-    <link rel="stylesheet" href="styles/timeline.css">
-    <link rel="stylesheet" href="styles.css"> <!-- Place this last -->
-    
+    <link rel="stylesheet" href="styles/modal.css"> <link rel="stylesheet" href="styles/card-effects.css"> <link rel="stylesheet" href="styles/timeline.css"> <link rel="stylesheet" href="styles/about-me.css">
+    <link rel="stylesheet" href="styles/project-cards.css"> <link rel="stylesheet" href="styles/hobby-gallery.css"> <link rel="stylesheet" href="styles.css">
 
-
-    <!-- Slick Carousel CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 </head>
@@ -47,7 +36,6 @@
         </div>
 
         <header>
-
             <div id="hamburgerMenu" class="hamburger-menu">
                 <div class="bar"></div>
                 <div class="bar"></div>
@@ -67,7 +55,7 @@
                     <li class="nav-item"><a class="nav-link" href="#hobbies">Hobbies</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
-            </nav>        
+            </nav>
 
             <div id="mobileNav" class="mobile-nav">
                 <ul class="nav">
@@ -79,91 +67,132 @@
                     <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
             </div>
-
         </header>
 
         <section id="hero" class="hero-section">
-            <div class="parallax-background"></div> 
-            <div class="hero-text parallax-element"> 
+           <div class="parallax-background"></div>
+            <div class="hero-text parallax-element">
                 <h1>Noel's Portfolio</h1>
                 <p>
                     Innovating in <span id="dynamic-word-hero">Cybersecurity</span>
-                </p>            
+                </p>
             </div>
         </section>
-        
-        
-        
+
 
         <section id="about" class="container py-5" data-animate>
-            <h2 class="animate__animated animate__fadeIn">About Me</h2>
-            <p id="about-text">Hi, I'm Noel, a Cybersecurity & Digital Forensics student at Ngee Ann Polytechnic, graduating in 2026. With experience in Python, C#, penetration testing, digital forensics, and more, I love working on <span id="dynamic-word">stupid</span> projects as shown below. <br><br>My versatility makes me well-suited for roles with a broad technical scope, and I'm currently seeking an entry-level position in computer and mobile forensics.</p>
+            <h2 class="animate__animated animate__fadeIn mb-4 text-center text-md-start">About Me</h2>
+            <div class="row align-items-center">
+                <div class="col-md-4 text-center mb-4 mb-md-0">
+                    <div class="profile-picture-wrapper">
+                        <img src="assets/images/profile.jpg" alt="Noel Ng" class="img-fluid rounded-circle profile-picture">
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                        Hi, I'm Noel! I'm a dedicated Cybersecurity & Digital Forensics student at Ngee Ann Polytechnic (Graduating Mar 2026), passionate about the ever-evolving landscape of digital security.
+                    </p>
+                    <p>
+                        I thrive on applying my skills to challenging and innovative projects, particularly in penetration testing, network security, and exploring the intricacies of digital forensics. I enjoy the process of problem-solving and continuous learning inherent in this field.
+                    </p>
+                    <div>
+                        <h5>Key Skills:</h5>
+                        <div class="about-skills mb-3">
+                            <span class="badge">Python</span>
+                            <span class="badge">C#</span>
+                            <span class="badge">Penetration Testing</span>
+                            <span class="badge">Digital Forensics</span>
+                            <span class="badge">Networking</span>
+                            <span class="badge">HTML</span>
+                            <span class="badge">CSS</span>
+                            <span class="badge">JavaScript</span>
+                            <span class="badge">AI/ML</span>
+                            <span class="badge">Discord Bot Dev</span>
+                            <span class="badge">Flask</span>
+                        </div>
+                    </div>
+                    <p>
+                        My technical versatility makes me well-suited for diverse roles, and I am actively seeking an entry-level position where I can contribute my skills in computer and mobile forensics, further develop my expertise, and make a meaningful impact.
+                    </p>
+                </div>
+            </div>
         </section>
-        
-        
-        <section id="education" class="container py-5" data-animate>
-            <h2 class="animate__animated animate__fadeIn">Education</h2>
+
+
+        <section id="education" class="container py-5">
+             <h2 data-animate>Education</h2>
             <div class="timeline">
-                <div class="timeline-item">
+                <div class="timeline-progress"></div>
+                <div class="timeline-indicator"></div>
+                 <div class="timeline-item" data-animate>
                     <a href="https://www.tomo-japanese.com/" target="_blank" class="timeline-link">
                         <div class="timeline-content acrylic">
                             <div class="school-logo">
                                 <img src="assets\icons\tomo.png" alt="Tomo Japanese Language School Logo">
                             </div>
-                            <h3>Tomo Japanese Language School</h3>
-                            <p class="timeline-date">Jun 2023 - Sep 2024</p>
-                            <p>Basic Japanese Course (JLPT N5)</p>
+                            <h3><i class="fas fa-school icon-prefix"></i>Tomo Japanese Language School</h3>
+                            <p class="timeline-date"><i class="fas fa-calendar-alt icon-prefix"></i>Jun 2023 - Sep 2024</p>
+                            <p><i class="fas fa-language icon-prefix"></i>Basic Japanese Course (JLPT N5)</p>
                             <ul>
-                                <li>Not JLPT N5 Certified yet</li>
+                                <li><i class="fas fa-certificate icon-prefix"></i>Not JLPT N5 Certified yet</li>
                             </ul>
                         </div>
                     </a>
                 </div>
-                <div class="timeline-item">
+                 <div class="timeline-item" data-animate>
                     <a href="https://www.np.edu.sg" target="_blank" class="timeline-link">
                         <div class="timeline-content acrylic">
                             <div class="school-logo">
                                 <img src="assets\icons\np.png" alt="Ngee Ann Polytechnic Logo">
                             </div>
-                            <h3>Ngee Ann Polytechnic</h3>
-                            <p class="timeline-date">Apr 2023 - Present (Expected Mar 2026)</p>
-                            <p>Diploma in Cybersecurity & Digital Forensics</p>
+                            <h3><i class="fas fa-school icon-prefix"></i>Ngee Ann Polytechnic</h3>
+                            <p class="timeline-date"><i class="fas fa-calendar-alt icon-prefix"></i>Apr 2023 - Present (Expected Mar 2026)</p>
+                            <p><i class="fas fa-graduation-cap icon-prefix"></i>Diploma in Cybersecurity & Digital Forensics</p>
                             <ul>
-                                <li>Current GPA (Y2S1): <span class="highlight-score">3.2</span></li>
-                                <li>CCA: Japanese Cultural Club (Apr 2023 - Aug 2023)</li>
-                                <li>Relevant coursework: Python, C#, Network Security, Digital Forensics</li>
+                                <li><i class="fas fa-star icon-prefix"></i>Current GPA (Y2S1): <span class="highlight-score">3.2</span></li>
+                                <li><i class="fas fa-users icon-prefix"></i>CCA: Japanese Cultural Club (Apr 2023 - Aug 2023)</li>
+                                <li class="key-modules"><i class="fas fa-book-open icon-prefix"></i>Key Modules:
+                                    <ul>
+                                        <li>Ethical Hacking & Defences</li>
+                                        <li>Secure Coding</li>
+                                        <li>Mobile & Cloud Forensics</li>
+                                        <li>Network Security Fundamentals</li>
+                                        <li>Python Programming</li>
+                                        <li>C# Programming</li>
+                                    </ul>
+                                </li>
                             </ul>
                         </div>
                     </a>
                 </div>
-                <div class="timeline-item">
+                 <div class="timeline-item" data-animate>
                     <a href="https://hillgrovesec.moe.edu.sg" target="_blank" class="timeline-link">
                         <div class="timeline-content acrylic">
                             <div class="school-logo">
                                 <img src="assets\icons\hillgrove.png" alt="Hillgrove Secondary School Logo">
                             </div>
-                            <h3>Hillgrove Secondary School</h3>
-                            <p class="timeline-date">Jan 2019 - Dec 2023</p>
-                            <p>Coursework: Design & Technology [Express Stream]</p>
+                            <h3><i class="fas fa-school icon-prefix"></i>Hillgrove Secondary School</h3>
+                            <p class="timeline-date"><i class="fas fa-calendar-alt icon-prefix"></i>Jan 2019 - Dec 2023</p>
+                            <p><i class="fas fa-pencil-ruler icon-prefix"></i>Coursework: Design & Technology [Express Stream]</p>
                             <ul>
-                                <li>Cambridge O-Levels L1R4: <span class="highlight-score">11</span></li>
-                                <li>CCA: Robotics Club</li>
-                                <li>Roles: ExCo Vice Head of Logistics</li>
+                                <li><i class="fas fa-star icon-prefix"></i>Cambridge O-Levels L1R4: <span class="highlight-score">11</span></li>
+                                <li><i class="fas fa-users icon-prefix"></i>CCA: Robotics Club</li>
+                                <li><i class="fas fa-user-tie icon-prefix"></i>Roles: ExCo Vice Head of Logistics</li>
                             </ul>
                         </div>
                     </a>
                 </div>
-                <div class="timeline-item">
+                 <div class="timeline-item" data-animate>
                     <a href="https://princesselizabethpri.moe.edu.sg" target="_blank" class="timeline-link">
                         <div class="timeline-content acrylic">
                             <div class="school-logo">
                                 <img src="assets\icons\elizabeth.png" alt="Princess Elizabeth Primary School Logo">
                             </div>
-                            <h3>Princess Elizabeth Primary School</h3>
-                            <p class="timeline-date">Jan 2013 - Dec 2019</p>
+                            <h3><i class="fas fa-school icon-prefix"></i>Princess Elizabeth Primary School</h3>
+                            <p class="timeline-date"><i class="fas fa-calendar-alt icon-prefix"></i>Jan 2013 - Dec 2019</p>
                             <ul>
-                                <li>PSLE: <span class="highlight-score">211</span></li>
-                                <li>CCA: Boys' Brigade</li>
+                                <li><i class="fas fa-star icon-prefix"></i>PSLE: <span class="highlight-score">211</span></li>
+                                <li><i class="fas fa-users icon-prefix"></i>CCA: Boys' Brigade</li>
                             </ul>
                         </div>
                     </a>
@@ -172,136 +201,288 @@
         </section>
 
         <section id="projects" class="container py-5" data-animate>
-            <h2 class="animate__animated animate__fadeIn">Projects</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <a href="https://github.com/retartle/PRG2-Assignment-Project-Otto-" target="_blank" class="card acrylic mb-4 text-decoration-none">
-                        <div class="card-body">
+            <h2>Projects</h2> <div class="row gx-4">
+                <div class="col-md-6 mb-4">
+                    <div class="card acrylic project-card h-100" data-repo="retartle/PRG2-Assignment-Project-Otto-">
+                         <img src="https://placehold.co/600x400/a2c2e1/3a4a6e?text=Project+Otto" class="card-img-top project-card-img" alt="Project Otto Placeholder">
+                        <div class="card-body d-flex flex-column">
                             <h5 class="card-title">Project Otto</h5>
-                            <p class="card-text">Programmed in OOP C# for an ice cream shop. Solo project for PRG2 Assignment.</p>
+                             <div class="mb-2">
+                                <span class="badge status-badge status-completed">Completed</span>
+                            </div>
+                            <p class="card-text flex-grow-1">Developed a desktop application for an ice cream shop management system using C# and Object-Oriented Programming principles as a solo academic project.</p>
+                            <div class="tech-tags mb-2">
+                                <span class="badge">C#</span>
+                                <span class="badge">OOP</span>
+                            </div>
+                             <p class="last-updated text-muted small mb-2">Last updated: <span class="update-date">Fetching...</span></p>
+                            <div class="mt-auto project-links">
+                                <a href="https://github.com/retartle/PRG2-Assignment-Project-Otto-" target="_blank" class="btn btn-sm me-2">
+                                    <img src="assets/icons/github.svg" alt="GitHub" class="button-icon"> GitHub
+                                </a>
+                            </div>
                         </div>
-                        <div class="project-icons">
-                            <img src="assets\icons\github.svg" alt="GitHub" class="icon">
-                        </div>
-                    </a>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <a href="https://github.com/retartle/retartle.github.io" target="_blank" class="card acrylic mb-4 text-decoration-none">
-                        <div class="card-body">
+
+                 <div class="col-md-6 mb-4">
+                     <div class="card acrylic project-card h-100" data-repo="retartle/retartle.github.io">
+                          <img src="https://placehold.co/600x400/a2c2e1/3a4a6e?text=Portfolio+Website" class="card-img-top project-card-img" alt="Portfolio Website Placeholder">
+                        <div class="card-body d-flex flex-column">
                             <h5 class="card-title">Portfolio Website</h5>
-                            <p class="card-text">This website was created as a personal project. AI Tools like Chatgpt, Claude and Deepseek were used to learn CSS & JS</p>
+                             <div class="mb-2">
+                                <span class="badge status-badge status-ongoing">Ongoing</span>
+                            </div>
+                            <p class="card-text flex-grow-1">Designed and developed this personal portfolio website using HTML, CSS, and JavaScript, incorporating modern features like dynamic animations, acrylic design, and dark mode.</p>
+                            <div class="tech-tags mb-2">
+                                <span class="badge">HTML</span>
+                                <span class="badge">CSS</span>
+                                <span class="badge">JavaScript</span>
+                                <span class="badge">Bootstrap</span>
+                            </div>
+                             <p class="last-updated text-muted small mb-2">Last updated: <span class="update-date">Fetching...</span></p>
+                            <div class="mt-auto project-links">
+                                <a href="https://github.com/retartle/retartle.github.io" target="_blank" class="btn btn-sm me-2">
+                                    <img src="assets/icons/github.svg" alt="GitHub" class="button-icon"> GitHub
+                                </a>
+                            </div>
                         </div>
-                        <div class="project-icons">
-                            <img src="assets\icons\github.svg" alt="GitHub" class="icon">
-                        </div>
-                    </a>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <a href="https://github.com/Frbueduen/Flapple" target="_blank" class="card acrylic mb-4 text-decoration-none">
-                        <div class="card-body">
-                            <h5 class="card-title">Flapple Bot (Co-Owned)</h5>
-                            <p class="card-text">Contributed to the Flapple Discord bot's development. Owned by Frbueduen.</p>
+
+                 <div class="col-md-6 mb-4">
+                     <div class="card acrylic project-card h-100" data-repo="Frbueduen/Flapple">
+                          <img src="assets\images\woopie-banner.png" class="card-img-top project-card-img" alt="Flapple Bot Placeholder">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Flapple Bot <span class="badge ownership-badge">Co-Owned</span></h5>
+                             <div class="mb-2">
+                                <span class="badge status-badge status-ongoing">Ongoing</span>
+                            </div>
+                            <p class="card-text flex-grow-1">Contributing developer for the 'Flapple' Discord bot (in-development codename, Python), focusing on feature enhancements and maintenance in a collaborative project.</p>
+                            <div class="tech-tags mb-2">
+                                <span class="badge">Python</span>
+                                <span class="badge">Discord.py</span>
+                                <span class="badge">API</span>
+                            </div>
+                             <p class="last-updated text-muted small mb-2">Last updated: <span class="update-date">Fetching...</span></p>
+                            <div class="mt-auto project-links">
+                                <a href="https://github.com/Frbueduen/Flapple" target="_blank" class="btn btn-sm me-2">
+                                    <img src="assets/icons/github.svg" alt="GitHub" class="button-icon"> GitHub
+                                </a>
+                            </div>
                         </div>
-                        <div class="project-icons">
-                            <img src="assets\icons\github.svg" alt="GitHub" class="icon">
-                            <img src="assets\icons\discord.png" alt="Discord" class="icon">
-                        </div>
-                    </a>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <a href="https://github.com/retartle/Cadence" target="_blank" class="card acrylic mb-4 text-decoration-none">
-                        <div class="card-body">
+
+                 <div class="col-md-6 mb-4">
+                     <div class="card acrylic project-card h-100" data-repo="retartle/Cadence">
+                          <img src="assets\images\cadence.png" class="card-img-top project-card-img" alt="Cadence Bot Placeholder">
+                        <div class="card-body d-flex flex-column">
                             <h5 class="card-title">Cadence Bot</h5>
-                            <p class="card-text">Fully developed the lightweight music Discord bot using yt-dlp. Developed during secondary school in Sep 2021.</p>
+                             <div class="mb-2">
+                                <span class="badge status-badge status-maintained">Maintained</span>
+                            </div>
+                            <p class="card-text flex-grow-1">Independently developed 'Cadence', a lightweight Discord music bot using Python and yt-dlp. Subsequently upgraded the framework to integrate Lavalink for enhanced performance.</p>
+                            <div class="tech-tags mb-2">
+                                <span class="badge">Python</span>
+                                <span class="badge">Discord.py</span>
+                                <span class="badge">Lavalink</span>
+                                <span class="badge">yt-dlp</span>
+                            </div>
+                             <p class="last-updated text-muted small mb-2">Last updated: <span class="update-date">Fetching...</span></p>
+                            <div class="mt-auto project-links">
+                                <a href="https://github.com/retartle/Cadence" target="_blank" class="btn btn-sm me-2">
+                                    <img src="assets/icons/github.svg" alt="GitHub" class="button-icon"> GitHub
+                                </a>
+                            </div>
                         </div>
-                        <div class="project-icons">
-                            <img src="assets\icons\github.svg" alt="GitHub" class="icon">
-                            <img src="assets\icons\discord.png" alt="Discord" class="icon">
-                        </div>
-                    </a>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <a href="https://github.com/retartle/AITT-PhiUSIIL-Logistic-Regression" target="_blank" class="card acrylic mb-4 text-decoration-none">
-                        <div class="card-body">
+
+                 <div class="col-md-6 mb-4">
+                     <div class="card acrylic project-card h-100" data-repo="retartle/AITT-PhiUSIIL-Logistic-Regression">
+                          <img src="https://placehold.co/600x400/a2c2e1/3a4a6e?text=Phishing+AI" class="card-img-top project-card-img" alt="Phishing AI Placeholder">
+                        <div class="card-body d-flex flex-column">
                             <h5 class="card-title">PhiUSIIL Logistic Regression AI</h5>
-                            <p class="card-text">Pair work project on developing an AI to detect phishing URLs using PhiUSIIL Kaggle dataset.</p>
+                             <div class="mb-2">
+                                <span class="badge status-badge status-completed">Completed</span>
+                            </div>
+                            <p class="card-text flex-grow-1">Collaborated on developing a Machine Learning model (Logistic Regression) in Python to detect phishing URLs, utilizing the PhiUSIIL dataset from Kaggle.</p>
+                            <div class="tech-tags mb-2">
+                                <span class="badge">Python</span>
+                                <span class="badge">Jupyter</span>
+                                <span class="badge">Scikit-learn</span>
+                                <span class="badge">AI/ML</span>
+                            </div>
+                             <p class="last-updated text-muted small mb-2">Last updated: <span class="update-date">Fetching...</span></p>
+                            <div class="mt-auto project-links">
+                                <a href="https://github.com/retartle/AITT-PhiUSIIL-Logistic-Regression" target="_blank" class="btn btn-sm me-2">
+                                    <img src="assets/icons/github.svg" alt="GitHub" class="button-icon"> GitHub
+                                </a>
+                                <a href="https://www.kaggle.com/datasets/shashwatwork/phishing-dataset-for-machine-learning" target="_blank" class="btn btn-sm">
+                                     <img src="assets/icons/kaggle.svg" alt="Kaggle" class="button-icon"> Kaggle Dataset
+                                </a>
+                            </div>
                         </div>
-                        <div class="project-icons">
-                            <img src="assets\icons\github.svg" alt="GitHub" class="icon">
-                            <img src="assets\icons\kaggle.svg" alt="Kaggle" class="icon">
-                        </div>
-                    </a>
+                    </div>
                 </div>
-            </div>
-        </section>
-        
 
-        <!-- Hobbies Section -->
+                 <div class="col-md-6 mb-4">
+                     <div class="card acrylic project-card h-100" data-repo="retartle/MeowkiesWhatsapp">
+                          <img src="https://placehold.co/600x400/a2c2e1/3a4a6e?text=Whatsapp+AI" class="card-img-top project-card-img" alt="Whatsapp AI Placeholder">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">AI Whatsapp Chatbot</h5>
+                             <div class="mb-2">
+                                <span class="badge status-badge status-completed">Completed</span>
+                            </div>
+                            <p class="card-text flex-grow-1">Co-developed an AI-powered WhatsApp chatbot using Python and Flask, integrating Google's Gemini API with a rule-based smart booking system.</p>
+                            <div class="tech-tags mb-2">
+                                <span class="badge">Python</span>
+                                <span class="badge">Flask</span>
+                                <span class="badge">Gemini API</span>
+                                <span class="badge">AI</span>
+                                <span class="badge">Chatbot</span>
+                            </div>
+                             <p class="last-updated text-muted small mb-2">Last updated: <span class="update-date">Fetching...</span></p>
+                            <div class="mt-auto project-links">
+                                <a href="https://github.com/retartle/MeowkiesWhatsapp" target="_blank" class="btn btn-sm me-2">
+                                    <img src="assets/icons/github.svg" alt="GitHub" class="button-icon"> GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+        </section>
+
+
         <section id="hobbies" class="container py-5">
-            <h2 class="animate__animated animate__fadeIn">Hobbies</h2>
+            <h2 data-animate>Hobbies</h2>
             <p style="color: #8896d3;">Photography</p>
+
             <p>Hokkaido & Kyushu <span class="highlight-score">Dec 2024</span></p>
-            <div class="row g-4">
-                <div class="col-md-4" data-animate>
+            <div class="row hobby-gallery-grid">
+                 <div class="col-md-4 col-sm-6 mb-4 gallery-item" data-animate>
                     <div class="card-effect">
-                        <img src="assets/images/jp24-1.jpeg" class="img-fluid rounded gallery-img" alt="Doggy in Furano">
+                        <img src="assets/images/jp24-1.jpeg" loading="lazy" class="img-fluid rounded gallery-img" alt="Shiba Inu dog sitting outdoors in Furano, Hokkaido">
                     </div>
                 </div>
-                <div class="col-md-4" data-animate>
+                <div class="col-md-4 col-sm-6 mb-4 gallery-item" data-animate>
                     <div class="card-effect">
-                        <img src="assets/images/jp24-2.jpeg" class="img-fluid rounded gallery-img" alt="Takachiho Gorge">
+                        <img src="assets/images/jp24-2.jpeg" loading="lazy" class="img-fluid rounded gallery-img" alt="View of Takachiho Gorge with boat on the water, Kyushu">
                     </div>
                 </div>
-                <div class="col-md-4" data-animate>
+                <div class="col-md-4 col-sm-6 mb-4 gallery-item" data-animate>
                     <div class="card-effect">
-                        <img src="assets/images/jp24-3.jpeg" class="img-fluid rounded gallery-img" alt="Lalaport Fukuoka Gundam Statue">
+                        <img src="assets/images/jp24-3.jpeg" loading="lazy" class="img-fluid rounded gallery-img" alt="Life-size RX-93ff ν Gundam statue at Lalaport Fukuoka">
                     </div>
                 </div>
-                <div class="col-md-4" data-animate>
+                <div class="col-md-4 col-sm-6 mb-4 gallery-item" data-animate>
                     <div class="card-effect">
-                        <img src="assets/images/jp24-4.jpeg" class="img-fluid rounded gallery-img" alt="Dogo at Furano">
+                        <img src="assets/images/jp24-4.jpeg" loading="lazy" class="img-fluid rounded gallery-img" alt="Shiba Inu dog looking towards the camera in Furano, Hokkaido">
                     </div>
                 </div>
-                <div class="col-md-4" data-animate>
+                <div class="col-md-4 col-sm-6 mb-4 gallery-item" data-animate>
                     <div class="card-effect">
-                        <img src="assets/images/jp24-5.jpeg" class="img-fluid rounded gallery-img" alt="Mount Yotei">
+                        <img src="assets/images/jp24-5.jpeg" loading="lazy" class="img-fluid rounded gallery-img" alt="Scenic view of Mount Yotei with clouds, Hokkaido">
                     </div>
                 </div>
-                <div class="col-md-4" data-animate>
+                <div class="col-md-4 col-sm-6 mb-4 gallery-item" data-animate>
                     <div class="card-effect">
-                        <img src="assets/images/jp24-6.jpeg" class="img-fluid rounded gallery-img" alt="Kokura Castle in Kitakyushu">
+                        <img src="assets/images/jp24-6.jpeg" loading="lazy" class="img-fluid rounded gallery-img" alt="Kokura Castle against a blue sky in Kitakyushu">
                     </div>
                 </div>
-                <div class="col-md-4" data-animate>
+                <div class="col-md-4 col-sm-6 mb-4 gallery-item" data-animate>
                     <div class="card-effect">
-                        <img src="assets/images/jp24-7.jpg" class="img-fluid rounded gallery-img" alt="Late maple leaves in Takachiho Gorge area">
+                        <img src="assets/images/jp24-7.jpg" loading="lazy" class="img-fluid rounded gallery-img" alt="Late autumn maple leaves near Takachiho Gorge, Kyushu">
                     </div>
                 </div>
-                <div class="col-md-4" data-animate>
+                <div class="col-md-4 col-sm-6 mb-4 gallery-item" data-animate>
                     <div class="card-effect">
-                        <img src="assets/images/jp24-8.jpg" class="img-fluid rounded gallery-img" alt="A horse at Rusutsu Ski Resort">
+                        <img src="assets/images/jp24-8.jpg" loading="lazy" class="img-fluid rounded gallery-img" alt="Horse standing in a field at Rusutsu Ski Resort, Hokkaido">
                     </div>
                 </div>
-                <div class="col-md-4" data-animate>
+                <div class="col-md-4 col-sm-6 mb-4 gallery-item" data-animate>
                     <div class="card-effect">
-                        <img src="assets/images/jp24-9.jpeg" class="img-fluid rounded gallery-img" alt="Car driving in Furano">
+                        <img src="assets/images/jp24-9.jpeg" loading="lazy" class="img-fluid rounded gallery-img" alt="View from inside a car driving through Furano, Hokkaido">
+                    </div>
+                </div>
+            </div>
+            <p><br><br>Hokkaido <span class="highlight-score">Oct 2024</span></p>
+             <div class="row hobby-gallery-grid">
+                 <div class="col-md-4 col-sm-6 mb-4 gallery-item" data-animate>
+                    <div class="card-effect">
+                        <img src="assets/images/jp24-10.jpg" loading="lazy" class="img-fluid rounded gallery-img" alt="Mountain landscape with autumn colors, Hokkaido">
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 gallery-item" data-animate>
+                    <div class="card-effect">
+                        <img src="assets/images/jp24-11.jpg" loading="lazy" class="img-fluid rounded gallery-img" alt="Waterfall cascading down rocks, Hokkaido">
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 gallery-item" data-animate>
+                    <div class="card-effect">
+                        <img src="assets/images/jp24-12.jpg" loading="lazy" class="img-fluid rounded gallery-img" alt="Close-up of autumn leaves on a tree, Hokkaido">
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 gallery-item" data-animate>
+                    <div class="card-effect">
+                        <img src="assets/images/jp24-13.jpg" loading="lazy" class="img-fluid rounded gallery-img" alt="Bridge over a river with autumn foliage, Hokkaido">
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 gallery-item" data-animate>
+                    <div class="card-effect">
+                        <img src="assets/images/jp24-14.jpg" loading="lazy" class="img-fluid rounded gallery-img" alt="Scenic view of a lake surrounded by autumn trees, Hokkaido">
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 gallery-item" data-animate>
+                    <div class="card-effect">
+                        <img src="assets/images/jp24-15.jpg" loading="lazy" class="img-fluid rounded gallery-img" alt="Path through an autumn forest, Hokkaido">
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 gallery-item" data-animate>
+                    <div class="card-effect">
+                        <img src="assets/images/jp24-16.jpg" loading="lazy" class="img-fluid rounded gallery-img" alt="Colorful autumn trees reflecting in water, Hokkaido">
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 gallery-item" data-animate>
+                    <div class="card-effect">
+                        <img src="assets/images/jp24-17.jpg" loading="lazy" class="img-fluid rounded gallery-img" alt="Mountain range with fall colors, Hokkaido">
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 gallery-item" data-animate>
+                    <div class="card-effect">
+                        <img src="assets/images/jp24-18.jpg" loading="lazy" class="img-fluid rounded gallery-img" alt="Road winding through autumn landscape, Hokkaido">
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 gallery-item" data-animate>
+                    <div class="card-effect">
+                        <img src="assets/images/jp24-19.jpg" loading="lazy" class="img-fluid rounded gallery-img" alt="Close-up of red autumn leaves, Hokkaido">
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 gallery-item" data-animate>
+                    <div class="card-effect">
+                        <img src="assets/images/jp24-20.jpg" loading="lazy" class="img-fluid rounded gallery-img" alt="Panoramic view of autumn valley, Hokkaido">
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 mb-4 gallery-item" data-animate>
+                    <div class="card-effect">
+                        <img src="assets/images/jp24-21.jpg" loading="lazy" class="img-fluid rounded gallery-img" alt="Stream flowing through autumn forest, Hokkaido">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Modal -->
+
         <div id="myModal" class="modal">
-            <span class="close">&times;</span>
+             <span class="close">&times;</span>
             <div class="modal-carousel-container">
-                <!-- Empty carousel container that will be populated dynamically -->
                 <div class="modal-carousel"></div>
                 <div id="caption"></div>
             </div>
         </div>
 
 
-        <!-- Footer and Contact Section -->
         <footer id="contact" class="acrylic no-hover text-center p-3">
             <h2>Contact</h2>
             <div class="social-icons mx-auto" style="max-width: 400px; display: flex; justify-content: center; gap: 20px;">
@@ -315,27 +496,26 @@
                     <img src="assets/icons/github.png" alt="GitHub" style="width: 40px; height: 40px;">
                 </a>
             </div>
-            
+
             <div class="email-container" style="margin: 20px 0; font-size: 1rem;">
-                <p>Email: 
+                <p>Email:
                     <a href="mailto:noelngzhien1212@gmail.com" class="email-link">noelngzhien1212@gmail.com</a>
                 </p>
             </div>
 
-            <!-- Name and icon -->
             <a style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
                 <h6>Noel 2025</h6>
             </a>
         </footer>
 
-        
-        <!-- jQuery (required for Slick) -->
+
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Slick Carousel JS -->
         <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-        <!-- Custom JS -->
+
+        <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+        <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+
         <script src="scripts.js"></script>
 </body>
 </html>

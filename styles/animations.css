@@ -1,21 +1,45 @@
-/* Slide-in animation */
-@keyframes slideIn {
-    from {
-        transform: translateY(-100%);
+/* Slide-in animation (General - used for sections, cards, timeline items) */
+[data-animate] {
+    opacity: 0;
+    transform: translateY(30px); /* Original value */
+    transition: opacity 0.6s ease-out, transform 0.8s ease-out; /* Original timing */
+}
+
+[data-animate].in-view {
+    opacity: 1;
+    transform: none; /* Resets transform (translateY(0) or translateX(0)) */
+}
+
+/* Timeline Specific Animations (Desktop) - Keep these if desired */
+@media (min-width: 769px) {
+    .timeline-item[data-animate] {
+        transition: opacity 0.6s ease-out, transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1); /* Custom ease */
+        /* Base opacity is already 0 from [data-animate] */
     }
-    to {
-        transform: translateY(0);
+
+    .timeline-item:nth-child(odd)[data-animate] {
+        transform: translateX(-50px); /* Start left */
+    }
+
+    .timeline-item:nth-child(even)[data-animate] {
+        transform: translateX(50px); /* Start right */
+    }
+
+    .timeline-item[data-animate].in-view {
+        opacity: 1;
+        transform: translateX(0); /* End centered */
     }
 }
 
-/* Slide-out animation */
+
+/* Slide-in/out for mobile nav */
+@keyframes slideIn {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
 @keyframes slideOut {
-    from {
-        transform: translateY(0); 
-    }
-    to {
-        transform: translateY(-100%); 
-    }
+    from { transform: translateY(0); }
+    to { transform: translateY(-100%); }
 }
 
 /* Modal Animations */
@@ -23,38 +47,23 @@
     0% { opacity: 0; }
     100% { opacity: 1; }
 }
-  
 @keyframes fadeOut {
     0% { opacity: 1; }
     100% { opacity: 0; }
 }
-
 @keyframes zoomIn {
     0% { transform: scale(0); }
     100% { transform: scale(1); }
 }
 
+/* Blinking cursor for dynamic word (if used) */
 @keyframes blink {
-    50% {
-        opacity: 0;
-    }
+    50% { opacity: 0; }
 }
 
-
-[data-animate] {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 1s ease;
-}
-
-[data-animate].in-view {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Optional: Styling the dynamic word */
-#dynamic-word {
-    color: #8896d3; /* Example color for the dynamic text */
+/* Styling the dynamic word (if used elsewhere) */
+#dynamic-word { /* Example ID */
+    color: #8896d3;
     font-weight: bold;
 }
 #dynamic-word::after {

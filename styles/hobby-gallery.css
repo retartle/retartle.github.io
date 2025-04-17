@@ -1,0 +1,24 @@
+/* --- Masonry Hobby Gallery Styling --- */
+
+/* Hide grid initially to prevent FOUC (Flash of Unstyled Content) */
+.hobby-gallery-grid {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; /* Smooth fade-in */
+}
+
+/* Ensure items within the grid maintain relative positioning for Masonry */
+/* These styles help Masonry calculate positions correctly */
+/* UPDATED Selector to use the new class */
+.hobby-gallery-grid > .gallery-item {
+    /* Masonry will handle absolute positioning, but ensure block display */
+    /* and prevent Bootstrap floats from interfering */
+    display: block;
+    float: none;
+    /* Vertical margin is handled by Bootstrap's mb-4, horizontal by Masonry's gutter */
+    /* Make sure the width defined by col-md-4 / col-sm-6 is respected */
+}
+
+/* Optional: Add some bottom margin to the container if needed */
+/* .hobby-gallery-grid { */
+/* margin-bottom: 1rem; */
+/* } */
